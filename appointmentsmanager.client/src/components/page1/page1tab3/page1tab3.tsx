@@ -74,13 +74,17 @@ const Page1Tab3: React.FC = () => {
 
     return (
         <form onSubmit={handleSubmit(onSubmit)} className="form-container">
+            <div style={{ display: "flex" }} >
             <FormField
-                label="First Name"
-                name="firstName"
-                control={control}
-                errors={errors.firstName}
-            />
-                <button>Pick Vendor</button>
+            className="small-input"
+            label="First Name"
+            name="firstName"
+            control={control}
+            errors={errors.firstName}
+                />
+                <input style={{ height: "27px", marginTop: "20px" }} className="small-input"></input>
+                <button style={{ height: "27px", marginTop: "20px" }}>Pick</button>
+            </div>
             <FormField
                 label="Last Name"
                 name="lastName"
@@ -94,13 +98,18 @@ const Page1Tab3: React.FC = () => {
                 control={control}
                 errors={errors.email}
             />
+            <div style={{ display: "flex" }} >
             <FormField
                 label="Password"
                 name="password"
                 type="password"
                 control={control}
                 errors={errors.password}
+                className="small-input"
             />
+            <input style={{ height: "27px", marginTop: "20px" }} className="small-input"></input>
+                <button style={{ height: "27px", marginTop: "20px" }}>Pick</button>
+            </div>
             <FormField
                 label="Confirm Password"
                 name="confirmPassword"
@@ -108,24 +117,19 @@ const Page1Tab3: React.FC = () => {
                 control={control}
                 errors={errors.confirmPassword}
             />
+
             <FormField
-                label="Age"
-                name="age"
-                type="number"
+                label="Address"
+                name="address"
+                as="textarea"
                 control={control}
-                errors={errors.age}
+                errors={errors.address}
             />
             <FormField
                 label="Phone Number"
                 name="phoneNumber"
                 control={control}
                 errors={errors.phoneNumber}
-            />
-            <FormField
-                label="Address"
-                name="address"
-                control={control}
-                errors={errors.address}
             />
             <FormField
                 label="City"

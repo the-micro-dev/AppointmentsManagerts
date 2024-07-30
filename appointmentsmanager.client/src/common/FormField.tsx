@@ -7,17 +7,18 @@ interface FormFieldProps<T> extends UseControllerProps<T> {
     type?: string;
     as?: React.ElementType;
     options?: { value: string; label: string }[];
+    className?: string;
 }
 
 const FormField = <T,>({
     label,
     type = 'text',
     as: Component = 'input',
-    options,
+    options, className,
     ...props
 }: FormFieldProps<T>) => {
     return (
-        <div>
+        <div className={`form-field ${className}`}>
             <label>{label}</label>
             <Controller
                 name={props.name as string}

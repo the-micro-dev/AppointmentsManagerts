@@ -3,7 +3,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 16px;
-    max-width: 600px;
+    max-width: 400px;
     margin:30px !important;
     display: grid;
     align-items: center;
@@ -29,17 +29,17 @@ form {
     flex-direction: column;
 }
 
-    .form-group label {
-        margin-bottom: 8px;
-    }
+.form-group label {
+    margin-bottom: 8px;
+}
 
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-        padding: 8px;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-    }
+.form-group input,
+.form-group select,
+.form-group textarea {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
 
 .error-message {
     color: red;
@@ -47,7 +47,25 @@ form {
     margin-top: 4px;
 }
 
+input, select, textarea {
+    width: 100%;
+    padding: 5px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+textarea{
+    height:80px;
+}
+
 .buttons-section{
     display:flex;
     gap:10px;
+}
+
+.small-input{
+    width:150px;
+    margin-right:20px;
 }
