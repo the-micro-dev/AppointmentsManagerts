@@ -44,19 +44,6 @@ type FormValues = {
     address: string;
     city: string;
     state: string;
-    zipCode: string;
-    country: string;
-    dateOfBirth: Date | null;
-    gender: string;
-    occupation: string;
-    company: string;
-    website?: string;
-    bio: string;
-    hobby: string;
-    language: string;
-    favoriteColor: string;
-    membership: boolean;
-    terms: boolean;
 };
 
 const Page1Tab3: React.FC = () => {
@@ -73,6 +60,37 @@ const Page1Tab3: React.FC = () => {
     };
 
     return (
+        <div>
+            <section className="upper-section">
+                <div style={{ display: "flex" }} >
+                    <FormField
+                        label="Password"
+                        name="password"
+                        control={control}
+                        errors={errors.password}
+                        className="small-input disabled"
+                    />
+                    <input style={{ height: "27px", marginTop: "20px" }} className="small-input disabled"></input>
+                </div>
+                <FormField
+                    label="Last Name"
+                    name="lastName"
+                    control={control}
+                    errors={errors.lastName} className="disabled"
+                />
+                <FormField
+                    label="Email"
+                    name="email"
+                    control={control}
+                    errors={errors.email} className="disabled"
+                />
+                <FormField
+                    label="Confirm Password"
+                    name="confirmPassword"
+                    control={control}
+                    errors={errors.confirmPassword} className="disabled"
+                />
+            </section>
         <form onSubmit={handleSubmit(onSubmit)} className="form-container">
             <div style={{ display: "flex" }} >
             <FormField
@@ -125,120 +143,13 @@ const Page1Tab3: React.FC = () => {
                 control={control}
                 errors={errors.address}
             />
-            <FormField
-                label="Phone Number"
-                name="phoneNumber"
-                control={control}
-                errors={errors.phoneNumber}
-            />
-            <FormField
-                label="City"
-                name="city"
-                control={control}
-                errors={errors.city}
-            />
-            <FormField
-                label="State"
-                name="state"
-                control={control}
-                errors={errors.state}
-            />
-            <FormField
-                label="Zip Code"
-                name="zipCode"
-                control={control}
-                errors={errors.zipCode}
-            />
-            <FormField
-                label="Country"
-                name="country"
-                control={control}
-                errors={errors.country}
-            />
-            <FormField
-                label="Date of Birth"
-                name="dateOfBirth"
-                type="date"
-                control={control}
-                errors={errors.dateOfBirth}
-            />
-            <FormField
-                label="Gender"
-                name="gender"
-                as="select"
-                control={control}
-                options={[
-                    { value: '', label: 'Select' },
-                    { value: 'male', label: 'Male' },
-                    { value: 'female', label: 'Female' },
-                    { value: 'other', label: 'Other' }
-                ]}
-                errors={errors.gender}
-            />
-            <FormField
-                label="Occupation"
-                name="occupation"
-                control={control}
-                errors={errors.occupation}
-            />
-            <FormField
-                label="Company"
-                name="company"
-                control={control}
-                errors={errors.company}
-            />
-            <FormField
-                label="Website"
-                name="website"
-                type="url"
-                control={control}
-                errors={errors.website}
-            />
-            <FormField
-                label="Bio"
-                name="bio"
-                as="textarea"
-                control={control}
-                errors={errors.bio}
-            />
-            <FormField
-                label="Hobby"
-                name="hobby"
-                control={control}
-                errors={errors.hobby}
-            />
-            <FormField
-                label="Language"
-                name="language"
-                control={control}
-                errors={errors.language}
-            />
-            <FormField
-                label="Favorite Color"
-                name="favoriteColor"
-                control={control}
-                errors={errors.favoriteColor}
-            />
-            <FormField
-                label="Membership"
-                name="membership"
-                type="checkbox"
-                control={control}
-                errors={errors.membership}
-            />
-            <FormField
-                label="Terms and Conditions"
-                name="terms"
-                type="checkbox"
-                control={control}
-                errors={errors.terms}
-            />
             <div class="buttons-section">
             <button type="submit">Submit</button>
             <button type="submit">Edit</button>
                 <button type="submit">Undo</button>
             </div>
             </form>
+        </div>
     );
 };
 

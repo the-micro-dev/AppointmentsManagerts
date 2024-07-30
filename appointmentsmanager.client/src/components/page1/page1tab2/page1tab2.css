@@ -1,0 +1,4 @@
+﻿.form-container.tab2 {
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    max-width: 100%;
+}

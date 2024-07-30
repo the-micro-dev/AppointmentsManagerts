@@ -69,3 +69,16 @@ textarea{
     width:150px;
     margin-right:20px;
 }
+
+.upper-section {
+    display: inline-grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    max-width: 100%;
+    padding:20px;
+    gap:20px;
+}
+
+.disabled{
+    pointer-events:none;
+}
+

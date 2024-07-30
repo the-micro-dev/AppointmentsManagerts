@@ -9,6 +9,8 @@ body {
     border: 2px solid grey;
     box-shadow: 5px 5px 5px 5px grey;
     width: -webkit-fill-available; /*100%; /* Ensure full width */
-    height: 100vh; /* Ensure full viewport height */
+    /*height: 100vh;*/ /* Ensure full viewport height */
     margin: 8px;
+    height: auto; /* Adjusts height based on content */
+    min-height: 100px; /* Minimum height for the div */
 }
