@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './page1.css'
 import { Page1Tab1 } from './page1tab1/page1tab1'
-import { Page1Tab2 } from './page1tab2/page1tab2'
+import Page1Tab3 from './page1tab3/page1tab3'
 import  Page3Tab1  from './page3tab1/page3tab1'
 
 const Page1 = () => {
@@ -37,7 +37,7 @@ const Page1 = () => {
             </div>
             <div className="subcontent">
                 {activeTab === 'subcontent1' && <Page1Tab1 />}
-                {activeTab === 'subcontent2' && <Page1Tab2 />}
+                {activeTab === 'subcontent2' && <Page1Tab3 />}
                 {activeTab === 'vendor' && <Page3Tab1 />}
             </div>
         </div>

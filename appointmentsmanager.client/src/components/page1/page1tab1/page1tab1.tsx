@@ -10,7 +10,6 @@ export const Page1Tab1 = () => {
         { id: 4, name: '', age: 35, city: '', name1: '', age1: 25, city1: '', name2: '', age2: 25, city2: '', name3: '', age3: 25, city3: '' },
     ];
     return (
-        < p>
             <div>
                 <table className="sample-table">
                     <thead>
@@ -54,7 +53,6 @@ export const Page1Tab1 = () => {
                     </div>
                 </div>
             </div>
-    </p >
     );
 }
 
