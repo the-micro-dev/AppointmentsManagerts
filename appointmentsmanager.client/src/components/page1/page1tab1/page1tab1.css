@@ -1,0 +1,40 @@
+/* styles.css */
+.sample-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+    .sample-table th, .sample-table td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+
+    .sample-table th {
+        background-color: #f2f2f2;
+    }
+
+    .sample-table tbody tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    .sample-table tbody tr:hover {
+        background-color: #e9e9e9;
+    }
+
+.page1tab1-bottom p{
+    display:contents;
+}
+
+.page1tab1-bottom {
+    margin: auto;
+    display: ruby-text;
+}
+
+.page1tab1-findby {
+    margin-top: 40px;
+}
+
+    .page1tab1-findby button {
+        margin-left: 10px;
+    }

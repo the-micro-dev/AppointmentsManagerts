@@ -1,0 +1,15 @@
+body {
+    border: 3px solid rgba(3,56,119,255);
+    margin: 0px !important;
+    width: max-content;
+    font-family: sans-serif;
+    font-size:medium;
+}
+
+button {
+    background: rgba(3, 56, 119, 255);
+    color: white;
+    padding: 5px;
+    width: 67px;
+    border-radius: 10px;
+}

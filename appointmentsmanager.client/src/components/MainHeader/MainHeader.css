@@ -1,0 +1,14 @@
+.main-header {
+    height: 100px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Three equal columns */
+    gap: 10px; /* Optional: Gap between images */
+    padding-bottom:5px;
+    border: 3px solid rgba(3, 56, 119, 255);
+}
+
+.main-header img {
+    width: 100%; /* Ensure images fill their grid cell */
+    height: 100px; /* Maintain aspect ratio */
+    display: block; /* Remove default inline behavior */
+}

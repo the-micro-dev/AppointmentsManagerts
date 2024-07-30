@@ -1,11 +1,14 @@
-﻿#root {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 2rem;
-    text-align: center;
+﻿.App {
 }
 
-th, td {
-    padding-left: 1rem;
-    padding-right: 1rem;
+body {
+    width: 100% !important;
+}
+
+.main-app-container {
+    border: 2px solid grey;
+    box-shadow: 5px 5px 5px 5px grey;
+    width: -webkit-fill-available; /*100%; /* Ensure full width */
+    height: 100vh; /* Ensure full viewport height */
+    margin: 8px;
 }
