@@ -10,7 +10,12 @@ export const Page1Tab1 = () => {
         { id: 4, name: '', age: 35, city: '', name1: '', age1: 25, city1: '', name2: '', age2: 25, city2: '', name3: '', age3: 25, city3: '' },
     ];
     return (
-            <div>
+             <div>
+                <div className="page1tab1-upper">
+                <input type="radio" name="pending" defaultChecked></input>Pending
+                <input type="radio" name="pending" ></input>Current
+            </div>
+            <input placeholder="find by.." style={{ width:"300px" }}></input>
                 <table className="sample-table">
                     <thead>
                         <tr>
@@ -46,12 +51,17 @@ export const Page1Tab1 = () => {
                     </tbody>
                 </table>
                 <div className="page1tab1-bottom">
-                    <div className="page1tab1-findby">
-                        <p>Find By:</p>
+                <div className="page1tab1-findby">
+                    <label style={{ alignSelf:"center" }}>Filter </label>
                         <input></input>
                         <button>Filter</button>
                     </div>
-                </div>
+            </div>
+            <div class="buttons-section" style={{ marginTop: "15px", justifyContent:"center" }}>
+                <button type="submit">Submit</button>
+                <button type="submit">Edit</button>
+                <button type="submit">Undo</button>
+            </div>
             </div>
     );
 }

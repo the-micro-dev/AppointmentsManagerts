@@ -33,8 +33,18 @@
 
 .page1tab1-findby {
     margin-top: 40px;
+    display:flex;
 }
 
     .page1tab1-findby button {
         margin-left: 10px;
     }
+
+
+.page1tab1-upper input {
+    width: min-content;
+}
+
+.page1tab1-upper{
+    padding:10px;
+}
