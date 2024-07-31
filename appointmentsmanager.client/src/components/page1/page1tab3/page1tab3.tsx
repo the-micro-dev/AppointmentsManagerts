@@ -6,7 +6,7 @@ import './page1tab3.css'
 
 // Define validation schema with Yup
 const schema = Yup.object().shape({
-    firstName: Yup.string().required('First Name is required').min(2, 'Must be at least 2 characters'),
+    SecondName: Yup.string().required('First Name is required').min(2, 'Must be at least 2 characters'),
     lastName: Yup.string().required('Last Name is required').min(2, 'Must be at least 2 characters'),
     email: Yup.string().email('Invalid email address').required('Email is required'),
     password: Yup.string().required('Password is required').min(8, 'Password must be at least 8 characters'),
@@ -34,7 +34,7 @@ const schema = Yup.object().shape({
 });
 
 type FormValues = {
-    firstName: string;
+    SecondName: string;
     lastName: string;
     email: string;
     password: string;
@@ -96,9 +96,9 @@ const Page1Tab3: React.FC = () => {
             <FormField
             className="small-input"
             label="First Name"
-            name="firstName"
+            name="SecondName"
             control={control}
-            errors={errors.firstName}
+            errors={errors.SecondName}
                 />
                 <input style={{ height: "27px", marginTop: "20px" }} className="small-input"></input>
                 <button style={{ height: "27px", marginTop: "20px" }}>Pick</button>

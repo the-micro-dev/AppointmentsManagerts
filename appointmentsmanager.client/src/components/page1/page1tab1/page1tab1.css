@@ -48,3 +48,12 @@
 .page1tab1-upper{
     padding:10px;
 }
+
+.items-container{
+    display:flex;
+    gap:20px;
+}
+
+.items-container .item{
+    display:ruby
+}
