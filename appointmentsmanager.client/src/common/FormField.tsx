@@ -1,6 +1,7 @@
 // FormField.tsx
 import React from 'react';
 import { Controller, FieldValues, UseControllerProps } from 'react-hook-form';
+import DatePicker from 'react-datepicker';
 
 interface FormFieldProps<T> extends UseControllerProps<T> {
     label: string;
@@ -24,6 +25,16 @@ const FormField = <T,>({
                 name={props.name as string}
                 control={props.control}
                 render={({ field }) => {
+                    if (type === 'date') {
+                        return (
+                            <DatePicker
+                                selected={field.value}
+                                onChange={(date: Date) => field.onChange(date)}
+                                dateFormat="yyyy/MM/dd"
+                                className="form-input"
+                            />
+                        );
+                    }
                     if (Component === 'select' && options) {
                         return (
                             <Component {...field}>

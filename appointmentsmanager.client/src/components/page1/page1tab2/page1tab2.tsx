@@ -6,60 +6,69 @@ import './page1tab2.css'
 
 // Define validation schema with Yup
 const schema = Yup.object().shape({
-    SecondName: Yup.string().required('First Name is required').min(2, 'Must be at least 2 characters'),
-    lastName: Yup.string().required('Last Name is required').min(2, 'Must be at least 2 characters'),
-    email: Yup.string().email('Invalid email address').required('Email is required'),
-    password: Yup.string().required('Password is required').min(8, 'Password must be at least 8 characters'),
-    confirmPassword: Yup.string()
-        .oneOf([Yup.ref('password'), null], 'Passwords must match')
-        .required('Confirm Password is required'),
-    age: Yup.number().required('Age is required').min(18, 'Must be at least 18'),
-    phoneNumber: Yup.string().required('Phone number is required').matches(/^[0-9]+$/, 'Phone number must be digits only'),
-    address: Yup.string().required('Address is required'),
-    city: Yup.string().required('City is required'),
-    state: Yup.string().required('State is required'),
-    zipCode: Yup.string().required('Zip Code is required').matches(/^[0-9]{5}$/, 'Invalid Zip Code'),
-    country: Yup.string().required('Country is required'),
-    dateOfBirth: Yup.date().required('Date of Birth is required').nullable(),
-    gender: Yup.string().required('Gender is required'),
-    occupation: Yup.string().required('Occupation is required'),
-    company: Yup.string().required('Company is required'),
-    website: Yup.string().url('Invalid URL'),
-    bio: Yup.string().required('Bio is required'),
-    hobby: Yup.string().required('Hobby is required'),
-    language: Yup.string().required('Language is required'),
-    favoriteColor: Yup.string().required('Favorite Color is required'),
-    membership: Yup.boolean().required('Membership status is required'),
-    terms: Yup.boolean().oneOf([true], 'You must accept the terms and conditions'),
+    PartnerCodency: Yup.string().required('First Name is required').min(2, 'Must be at least 2 characters'),
+    address: Yup.string().required('Last Name is required').min(2, 'Must be at least 2 characters'),
+    procurementtype: Yup.string().required('ProcurementType is required'),
+    saasCode: Yup.string()
+        .required('Confirm Saascode is required'),
+    city: Yup.string().required('City is required').min(8, 'City/Zip must be at least 8 characters'),
+    partnercode: Yup.number().required('PartnerCode is required').min(18, 'Must be at least 18'),
+    attn: Yup.number().required('Attn is required'),
+    sendBy: Yup.number().required('sendBy is required'),
+    email: Yup.number().required('Email is required'),
+    department: Yup.number().required('Department is required'),
+    EffectiveDate: Yup.number().required('EffectiveDate is required'),
+    CampusLocation: Yup.number().required('CampusLocation is required'),
+    fax: Yup.string().required('fax is required'),
+    AcquisitionMethod: Yup.string().required('AcquisitionMethod is required'),
+    ExpirationDate: Yup.string().required('ExpirationDate is required'),
+    AuthorityDate: Yup.string().required('ExpirationDate is required'),
+    ApprovalCategory: Yup.string().required('ApprovalCategory is required'),
+    AnnualIncrease: Yup.number().required('AnnualIncrease is required'),
+    PaymentAmount: Yup.number().required('AnnualIncrease is required'),
+    ReplacementCategory: Yup.string().required('ApprovalCategory is required'),
+    GrandTotal: Yup.string().required('GrandTotal is required'),
+    Frequency: Yup.string().required('Frequency is required'),
+    NumPayments: Yup.number().required('NumPayments is required'),
+    MNumPayments: Yup.number().required('MNumPayments is required'),
+    Link: Yup.string().required('Frequency is required'),
+    Consultant: Yup.string().required('Consultant is required'),
+    Project: Yup.string().required('Frequency is required'),
+
 });
 
 type FormValues = {
-    SecondName: string;
-    lastName: string;
-    email: string;
-    password: string;
-    confirmPassword: string;
-    age: number;
-    phoneNumber: string;
+    PartnerCodency: string;
     address: string;
+    procurementtype: string;
+    saasCode: string;
     city: string;
-    state: string;
-    zipCode: string;
-    country: string;
-    dateOfBirth: Date | null;
-    gender: string;
-    occupation: string;
-    company: string;
-    website?: string;
-    bio: string;
-    hobby: string;
-    language: string;
-    favoriteColor: string;
-    membership: boolean;
-    terms: boolean;
+    partnercode: number;
+    attn: string;
+    sendBy: string;
+    phoneNumber: string;
+    fax: string;
+    email: string;
+    department: string;
+    EffectiveDate: Date | null;
+    CampusLocation: string;
+    AcquisitionMethod: string;
+    ExpirationDate: Date | null;
+    AuthorityDate: Date | null;
+    ApprovalCategory: string;
+    AnnualIncrease: number;
+    PaymentAmount: number;
+    ReplacementCategory: string;
+    GrandTotal: string;
+    Frequency: string;
+    NumPayments: number;
+    MNumPayments: number;
+    Link: string;
+    Consultant: string;
+    Project: string;
 };
 
-const Page1Tab2: React.FC = () => {
+const Ppartnercode1Tab2: React.FC = () => {
     const { handleSubmit, control, formState: { errors } } = useForm<FormValues>({
         resolver: yupResolver(schema),
         defaultValues: {
@@ -77,75 +86,48 @@ const Page1Tab2: React.FC = () => {
             <section className="upper-section">
                 <div style={{ display: "flex" }} >
                     <FormField
-                        label="Password"
-                        name="password"
+                        label="Consultant"
+                        name="Consultant"
                         control={control}
-                        errors={errors.password}
+                        errors={errors.Consultant}
                         className="small-input disabled"
                     />
-                    <input style={{ height: "27px", marginTop: "20px" }} className="small-input disabled"></input>
+                    <FormField
+                        label="Project"
+                        name="Project"
+                        control={control}
+                        errors={errors.Project}
+                        className="small-input disabled"
+                    />
+                    <input style={{ height: "27px", marginTop: "25px", width: "30px" }} className="disabled"></input>
                 </div>
                 <FormField
-                    label="Last Name"
-                    name="lastName"
+                    label="AcquisitionMethod"
+                    name="AcquisitionMethod"
+                    as="select"
                     control={control}
-                    errors={errors.lastName} className="disabled"
+                    options={[
+                        { value: 'Purchase', label: 'Purchase' },
+                        { value: 'Sell', label: 'Sell' }
+                    ]}
+                    errors={errors.AcquisitionMethod}
                 />
-                <FormField
-                    label="Email"
-                    name="email"
-                    control={control}
-                    errors={errors.email} className="disabled"
-                />
-                <FormField
-                    label="Confirm Password"
-                    name="confirmPassword"
-                    control={control}
-                    errors={errors.confirmPassword} className="disabled"
-                />
+                <div style={{ display: "flex" }} >
+                    <label>CP1</label>
+                    <input style={{ height: "27px", marginTop: "25px", width: "30px"}} className="disabled"></input>
+                    <input style={{ height: "27px", marginTop: "25px", marginLeft: "20px" }} className="disabled"></input>
+                </div>
+                
             </section>
             <form onSubmit={handleSubmit(onSubmit)} className="form-container tab2">
-                <div style={{ display: "flex" }} >
                     <FormField
-                        className="small-input"
-                        label="First Name"
-                        name="SecondName"
+                        label="Agency(Partner)"
+                        name="PartnerCodency"
                         control={control}
-                        errors={errors.SecondName}
+                        errors={errors.PartnerCodency}
                     />
-                    <input style={{ height: "27px", marginTop: "20px" }} className="small-input"></input>
-                    <button style={{ height: "27px", marginTop: "20px" }}>Pick</button>
-                </div>
-                <FormField
-                    label="Last Name"
-                    name="lastName"
-                    control={control}
-                    errors={errors.lastName}
-                />
-                <FormField
-                    label="Email"
-                    name="email"
-                    as="textarea"
-                    control={control}
-                    errors={errors.email}
-                />
-                <div style={{ display: "flex" }} >
-                    <FormField
-                        label="Password"
-                        name="password"
-                        control={control}
-                        errors={errors.password}
-                        className="small-input"
-                    />
-                    <input style={{ height: "27px", marginTop: "20px" }} className="small-input"></input>
-                    <button style={{ height: "27px", marginTop: "20px" }}>Pick</button>
-                </div>
-                <FormField
-                    label="Confirm Password"
-                    name="confirmPassword"
-                    control={control}
-                    errors={errors.confirmPassword}
-                />
+                <button style={{ height: "27px", marginTop: "20px" }}>Pick</button>
+
 
                 <FormField
                     label="Address"
@@ -154,45 +136,10 @@ const Page1Tab2: React.FC = () => {
                     control={control}
                     errors={errors.address}
                 />
+                <div>
                 <FormField
-                    label="City"
-                    name="city"
-                    control={control}
-                    errors={errors.city}
-                />
-                <FormField
-                    label="State"
-                    name="state"
-                    control={control}
-                    errors={errors.state}
-                />
-                <FormField
-                    label="Zip Code"
-                    name="zipCode"
-                    control={control}
-                    errors={errors.zipCode}
-                />
-                <FormField
-                    label="Country"
-                    name="country"
-                    control={control}
-                    errors={errors.country}
-                />
-                <FormField
-                    label="Occupation"
-                    name="occupation"
-                    control={control}
-                    errors={errors.occupation}
-                />
-                <FormField
-                    label="Company"
-                    name="company"
-                    control={control}
-                    errors={errors.company}
-                />
-                <FormField
-                    label="Gender"
-                    name="gender"
+                    label="ProcurementType"
+                    name="procurementtype"
                     as="select"
                     control={control}
                     options={[
@@ -201,39 +148,199 @@ const Page1Tab2: React.FC = () => {
                         { value: 'female', label: 'Female' },
                         { value: 'other', label: 'Other' }
                     ]}
-                    errors={errors.gender}
+                    errors={errors.procurementtype}
                 />
                 <FormField
-                    label="Bio"
-                    name="bio"
+                    label="Saas Code"
+                    name="saasCode"
+                    control={control}
+                    errors={errors.saasCode} className="disabled"
+                    />
+                </div>
+
+                <FormField
+                    label="City/State/Zip"
+                    name="city"
+                    control={control}
+                    errors={errors.city}
+                />
+                
+                <FormField
+                    label="Partner Code"
+                    name="partnercode"
+                    control={control}
+                    errors={errors.city}
+                />
+                <FormField
+                    label="Attn"
+                    name="attn"
+                    control={control}
+                    errors={errors.city}
+                />
+                <div></div>
+                <FormField
+                    label="Send By"
+                    name="sendBy"
+                    as="select"
+                    control={control}
+                    options={[
+                        { value: 'email', label: 'Email' },
+                        { value: 'phone', label: 'Phone' },
+                    ]}
+                    errors={errors.sendBy}
+                />
+               
+                <div style={{ display: "flex" }} >
+                    <FormField
+                        label="fax"
+                        name="fax"
+                        control={control}
+                        errors={errors.fax}
+                        className="small-input"
+                    />
+                    <div>
+                        <input style={{ height: "15px", marginTop: "20px" }}type="checkbox"></input>
+                        <label>HandMail</label>
+                    </div>
+                    <button style={{ height: "27px", marginTop: "20px" }}>Pick</button>
+                </div>
+                <FormField
+                    label="Email"
+                    name="email"
+                    control={control}
+                    errors={errors.email}
+                />
+                <div></div>
+                
+                <FormField
+                    label="Departments(s)"
+                    name="department"
+                    control={control}
+                    errors={errors.department}
+                />
+                <FormField
+                    label="Effective date"
+                    name="EffectiveDate"
+                    type="date"
+                    control={control}
+                    errors={errors.saasCode}
+                />
+                
+                <FormField
+                    label="CampusLocation"
+                    name="CampusLocation"
                     as="textarea"
                     control={control}
-                    errors={errors.bio}
+                    errors={errors.CampusLocation}
                 />
                 <FormField
-                    label="Hobby"
-                    name="hobby"
+                    label="ExpirationDate"
+                    name="ExpirationDate"
                     control={control}
-                    errors={errors.hobby}
+                    errors={errors.ExpirationDate}
                 />
                 <FormField
-                    label="Language"
-                    name="language"
+                    label="AcquisitionMethod"
+                    name="AcquisitionMethod"
+                    as="select"
                     control={control}
-                    errors={errors.language}
+                    options={[
+                        { value: 'Purchase', label: 'Purchase' },
+                        { value: 'Sell', label: 'Sell' }
+                    ]}
+                    errors={errors.AcquisitionMethod}
+                />
+
+                <FormField
+                    label="AuthorityDate"
+                    name="AuthorityDate"
+                    control={control}
+                    errors={errors.ExpirationDate}
                 />
                 <FormField
-                    label="Favorite Color"
-                    name="favoriteColor"
+                    label="ApprovalCategory"
+                    name="ApprovalCategory"
+                    as="select"
                     control={control}
-                    errors={errors.favoriteColor}
+                    options={[
+                        { value: 'Authority Apr', label: 'Authority Appr' },
+                        { value: '', label: '' }
+                    ]}
+                    errors={errors.ApprovalCategory}
                 />
                 <FormField
-                    label="Favorite Color"
-                    name="favoriteColor"
+                    label="Max Annual Increase %"
+                    name="AnnualIncrease"
                     control={control}
-                    errors={errors.favoriteColor}
+                    type="number"
+                    errors={errors.ExpirationDate}
                 />
+                <FormField
+                    label="Payment Amount"
+                    name="PaymentAmount"
+                    control={control}
+                    type="number"
+                    errors={errors.PaymentAmount}
+                />
+                <FormField
+                    label="Replacement Category"
+                    name="ReplacementCategory"
+                    as="select"
+                    control={control}
+                    options={[
+                        { value: 'Subsequent', label: 'Subsequent' },
+                        { value: '', label: '' }
+                    ]}
+                    errors={errors.ReplacementCategory}
+                />
+                <FormField
+                    label="Grand Total"
+                    name="GrandTotal"
+                    control={control}
+                    type="number"
+                    errors={errors.PaymentAmount}
+                />
+                <FormField
+                    label="Frequcnyy"
+                    name="Frequency"
+                    as="select"
+                    control={control}
+                    options={[
+                        { value: 'Onetime', label: 'Onetime' },
+                        { value: '', label: '' }
+                    ]}
+                    errors={errors.Frequency}
+                />
+                <div style={{ display: "flex" }} >
+                    <FormField
+                        label="Num Payments"
+                        name="NumPayments"
+                        control={control}
+                        type="number"
+                        errors={errors.NumPayments}
+                        className="small-input"
+                    />
+                    <FormField
+                        label="MNum Payments"
+                        name="MNumPayments"
+                        control={control}
+                        type="number"
+                        errors={errors.NumPayments}
+                        className="small-input"
+                    />
+                </div>
+                <FormField
+                    label="Link"
+                    name="Link"
+                    control={control}
+                    errors={errors.Link}
+                />
+                <div style={{ display:"ruby" }}>
+                    <input style={{ height: "15px", marginTop: "20px" }} type="checkbox"></input>
+                    <label>Contract Doc Required</label>
+                </div>
+               
+
                 <button type="submit">Edit </button>
                 <label></label>
                 <div class="buttons-section">
@@ -248,4 +355,4 @@ const Page1Tab2: React.FC = () => {
         </div>
     );
 };
-export default Page1Tab2;
+export default Ppartnercode1Tab2;
