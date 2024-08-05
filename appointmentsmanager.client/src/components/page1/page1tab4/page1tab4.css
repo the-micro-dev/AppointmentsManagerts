@@ -1,1 +1,39 @@
-﻿
+﻿/* Table.css */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    cursor: pointer;
+}
+
+.sort-icon {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin-left: 5px;
+    border: 5px solid transparent;
+    border-top: 5px solid #333;
+    transform: rotate(0deg);
+    transition: transform 0.3s;
+}
+
+    .sort-icon.asc {
+        transform: rotate(0deg);
+    }
+
+    .sort-icon.desc {
+        transform: rotate(180deg);
+    }
+
+input[type="text"] {
+    width: 100%;
+    box-sizing: border-box;
+}
