@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Modal from '../../../common/Modal/Modal'; // Ensure you have this component
-import './page1tab6.css'; // Import your CSS
+import './page1tab8.css'; // Import your CSS
 import ModalContent from './ModalContent'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
@@ -11,7 +11,7 @@ type TableData = {
     description: string;
 };
 
-const Page1Tab6: React.FC = () => {
+const Page1Tab8: React.FC = () => {
     const [data, setData] = useState<TableData[]>([]);
     const [selectedRow, setSelectedRow] = useState<TableData | null>(null);
     const [isModalVisible, setIsModalVisible] = useState(false);
@@ -111,4 +111,4 @@ const Page1Tab6: React.FC = () => {
     );
 };
 
-export default Page1Tab6;
+export default Page1Tab8;
