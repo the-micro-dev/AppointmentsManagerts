@@ -6,7 +6,9 @@ import Page1Tab2 from './page1tab2/page1tab2'
 import Page3Tab1 from './page3tab1/page3tab1'
 import Page1Tab4 from './page1tab4/page1tab4'
 import Page1Tab5 from './page1tab5/page1tab5'
+import Page1Tab6 from './page1tab6/page1tab6'
 import Page1Tab7 from './page1tab7/page1tab7'
+
 
 const Page1 = () => {
     const [activeTab, setActiveTab] = useState('subcontent1'); // Local state to manage active tab
@@ -50,6 +52,12 @@ const Page1 = () => {
                         Sub Item 5
                     </li>
                     <li
+                        className={activeTab === 'subcontent6' ? 'active' : ''}
+                        onClick={() => handleTabChange('subcontent6')}
+                    >
+                        Sub Item 6
+                    </li>
+                    <li
                         className={activeTab === 'subcontent7' ? 'active' : ''}
                         onClick={() => handleTabChange('subcontent7')}
                     >
@@ -63,6 +71,7 @@ const Page1 = () => {
                 {activeTab === 'subcontent3' && <Page1Tab3 />}
                 {activeTab === 'subcontent4' && <Page1Tab4 />}
                 {activeTab === 'subcontent5' && <Page1Tab5 />}
+                {activeTab === 'subcontent6' && <Page1Tab6 />}
                 {activeTab === 'subcontent7' && <Page1Tab7 />}
                 {activeTab === 'subcontent5' && <Page3Tab1 />}
                 
