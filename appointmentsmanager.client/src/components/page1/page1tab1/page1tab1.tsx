@@ -95,7 +95,7 @@ export const Page1Tab1 = () => {
                     </Modal>
                     </div>
             </div>
-            <div class="buttons-section" style={{ marginTop: "15px", justifyContent:"center" }}>
+            <div className="buttons-section" style={{ marginTop: "15px", justifyContent:"center" }}>
                 <button type="submit">Submit</button>
                 <button type="submit" onClick={openModal2}>Edit</button>
                 <Modal
