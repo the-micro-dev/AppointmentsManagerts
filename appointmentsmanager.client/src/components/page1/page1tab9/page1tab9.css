@@ -1,0 +1,19 @@
+﻿
+.search-dropdown {
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    position: absolute;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.search-item {
+    padding: 8px;
+    cursor: pointer;
+}
+
+    .search-item:hover {
+        background-color: #f0f0f0;
+    }
