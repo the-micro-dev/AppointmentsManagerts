@@ -52,3 +52,9 @@ export interface IContracts {
     VoidDate: string;// date;
     VoidReason: string;
 }
+
+export interface IApprovalInfo {
+    Level: number;
+    Approved: string;
+    Approved_tds: string;
+}
