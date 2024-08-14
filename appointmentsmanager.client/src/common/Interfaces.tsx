@@ -1,4 +1,4 @@
-
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 export interface IDistribution {
     id: number;
@@ -23,4 +23,32 @@ export interface IDistributionRecipient extends IDistribution {
     Email: string;
     MailingList: string;
     Partner: string;
+}
+
+export interface HeaderFormSectionProps {
+    consultantValue: string;
+    projectValue: string;
+    input1Value: string;
+    input2Value: string;
+    input3Value: string;
+    input4Value: string;
+    control: any;
+    errors: {
+        Consultant?: any;
+        Project?: any;
+    };
+}
+
+export interface IContracts {
+    CP1No: number;
+    Vendor: string;
+    Effective: string;
+    Expiration: string;
+    Total: number;
+    Contract: boolean;
+    Status: string;
+    Repl: string;
+    Void: string;
+    VoidDate: string;// date;
+    VoidReason: string;
 }

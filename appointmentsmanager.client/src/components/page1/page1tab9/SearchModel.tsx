@@ -32,6 +32,38 @@ const SearchModal: React.FC<SearchModalProps> = ({ isVisible, onClose, onSelect 
     const details: IDistribution[] = [
         { id: 1, name: 'Jane Doe', email: 'jane@example.com', phone: '987-654-3210', address: '456 Oak St' },
         { id: 2, name: 'John Smith', email: 'john.smith@example.com', phone: '555-555-5555', address: '789 Pine St' },
+        {
+            id: 3,
+            name: 'abc',
+            agency: 'Commercial',
+            address1: 'abc SE 123',
+            address2: 'abc SE 123',
+            city: 'abc123',
+            state: 'abc123 state',
+            zip: 12235,
+            handmail: true,
+            fax: 'fax',
+            deliverymethod: 'Email',
+            email: 'abc@gmail.com',
+            phone: '123456789',
+            address: 'SE abc st'
+        },
+        {
+            id: 4,
+            name: 'efg',
+            agency: 'efg agency',
+            address1: 'efg SE 123',
+            address2: 'efg SE 123',
+            city: 'efg123',
+            state: 'efg state',
+            zip: 42135,
+            handmail: false,
+            fax: 'fax',
+            deliverymethod: 'Email',
+            email: 'efg@gmail.com',
+            phone: '123456789',
+            address: 'SE efg st'
+        }
         // Add more detail records as needed
     ];
 
