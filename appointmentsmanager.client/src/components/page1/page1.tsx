@@ -92,7 +92,7 @@ const Page1 = () => {
                         Sub Item 11
                     </li>
                     </ul>
-            </div>
+            </div> 
             <div className="subcontent">
                 {activeTab === 'subcontent1' && <Page1Tab1 />}
                 {activeTab === 'subcontent2' && <Page1Tab2 />}
