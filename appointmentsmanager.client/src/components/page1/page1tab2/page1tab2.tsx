@@ -5,6 +5,7 @@ import FormField from '../../../common/FormField'
 import './page1tab2.css'
 import Modal from '../../../common/Modal/Modal';
 import PickAgency from '../../../common/Page1/PickAgency'
+import PickRecipient from '../../../common/Page1/PickRecipient'
 import React, { useState, useEffect } from 'react';
 
 // Define validation schema with Yup
@@ -70,7 +71,7 @@ type FormValues = {
     Project: string;
 };
 
-const Ppartnercode1Tab2: React.FC = () => {
+const Page1Tab2: React.FC = () => {
     const { handleSubmit, control, formState: { errors } } = useForm<FormValues>({
         resolver: yupResolver(schema),
         defaultValues: {
@@ -80,10 +81,15 @@ const Ppartnercode1Tab2: React.FC = () => {
     });
 
     const [showPopup, setShowPopup] = useState(false);
+    const [showPopup1, setShowPopup1] = useState(false);
 
     // Toggle visibility functions
-    const openModal = () => setShowPopup(true);
-    const closeModal = () => setShowPopup(false);
+    const openModal = () => { setShowPopup(true); setShowPopup1 (false)}
+    const closeModal = () => {
+        setShowPopup(false); setShowPopup1(false);
+    }
+    const openModal1 = () => { setShowPopup1(true); setShowPopup(false)};
+    const closeModal1 = () => { setShowPopup1(false); setShowPopup(false)}
 
     const onSubmit = (data: FormValues) => {
         console.log('Form data', data);
@@ -213,7 +219,10 @@ const Ppartnercode1Tab2: React.FC = () => {
                         <input style={{ height: "15px", marginTop: "20px" }}type="checkbox"></input>
                         <label>HandMail</label>
                     </div>
-                    <button style={{ height: "27px", marginTop: "20px" }}>Pick</button>
+                    <button style={{ height: "27px", marginTop: "20px" }} onClick={openModal1 }>Pick</button>
+                    <Modal isVisible={showPopup1} onClose={closeModal1} title="Pick Recipient">
+                        <PickRecipient></PickRecipient>
+                    </Modal>
                 </div>
                 <FormField
                     label="Email"
@@ -366,4 +375,4 @@ const Ppartnercode1Tab2: React.FC = () => {
         </div>
     );
 };
-export default Ppartnercode1Tab2;
+export default Page1Tab2;

@@ -1,2 +1,16 @@
-{
-}
+[
+  {
+    "LastName": "last",
+    "FirstName": "first",
+    "Email": "last@gmail.com",
+    "MailingList": "M",
+    "Partner": "East"
+  },
+  {
+    "LastName": "last2",
+    "FirstName": "first2",
+    "Email": "last123@gmail.com",
+    "MailingList": "FM",
+    "Partner": "West"
+  }
+]
