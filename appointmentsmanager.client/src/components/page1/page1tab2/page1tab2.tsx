@@ -3,37 +3,39 @@ import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import FormField from '../../../common/FormField'
 import './page1tab2.css'
+import Modal from '../../../common/Modal/Modal';
+import PickAgency from '../../../common/Page1/PickAgency'
+import React, { useState, useEffect } from 'react';
 
 // Define validation schema with Yup
 const schema = Yup.object().shape({
-    PartnerCodency: Yup.string().required('First Name is required').min(2, 'Must be at least 2 characters'),
-    address: Yup.string().required('Last Name is required').min(2, 'Must be at least 2 characters'),
-    procurementtype: Yup.string().required('ProcurementType is required'),
-    saasCode: Yup.string()
-        .required('Confirm Saascode is required'),
-    city: Yup.string().required('City is required').min(8, 'City/Zip must be at least 8 characters'),
-    partnercode: Yup.number().required('PartnerCode is required').min(18, 'Must be at least 18'),
-    attn: Yup.number().required('Attn is required'),
-    sendBy: Yup.number().required('sendBy is required'),
-    email: Yup.number().required('Email is required'),
-    department: Yup.number().required('Department is required'),
-    EffectiveDate: Yup.number().required('EffectiveDate is required'),
-    CampusLocation: Yup.number().required('CampusLocation is required'),
-    fax: Yup.string().required('fax is required'),
-    AcquisitionMethod: Yup.string().required('AcquisitionMethod is required'),
-    ExpirationDate: Yup.string().required('ExpirationDate is required'),
-    AuthorityDate: Yup.string().required('ExpirationDate is required'),
-    ApprovalCategory: Yup.string().required('ApprovalCategory is required'),
-    AnnualIncrease: Yup.number().required('AnnualIncrease is required'),
-    PaymentAmount: Yup.number().required('AnnualIncrease is required'),
-    ReplacementCategory: Yup.string().required('ApprovalCategory is required'),
-    GrandTotal: Yup.string().required('GrandTotal is required'),
-    Frequency: Yup.string().required('Frequency is required'),
-    NumPayments: Yup.number().required('NumPayments is required'),
-    MNumPayments: Yup.number().required('MNumPayments is required'),
-    Link: Yup.string().required('Frequency is required'),
-    Consultant: Yup.string().required('Consultant is required'),
-    Project: Yup.string().required('Frequency is required'),
+    PartnerCodency: Yup.string(),
+    address: Yup.string(),
+    procurementtype: Yup.string(),
+    saasCode: Yup.string(),
+    city: Yup.string(),
+    partnercode: Yup.number(),
+    attn: Yup.number(),
+    sendBy: Yup.number(),
+    email: Yup.number(),
+    department: Yup.number(),
+    EffectiveDate: Yup.number(),
+    CampusLocation: Yup.number(),
+    fax: Yup.string(),
+    AcquisitionMethod: Yup.string(),
+    ExpirationDate: Yup.string(),
+    AuthorityDate: Yup.string(),
+    ApprovalCategory: Yup.string(),
+    AnnualIncrease: Yup.number(),
+    PaymentAmount: Yup.number(),
+    ReplacementCategory: Yup.string(),
+    GrandTotal: Yup.string(),
+    Frequency: Yup.string(),
+    NumPayments: Yup.number(),
+    MNumPayments: Yup.number(),
+    Link: Yup.string(),
+    Consultant: Yup.string(),
+    Project: Yup.string(),
 
 });
 
@@ -76,6 +78,12 @@ const Ppartnercode1Tab2: React.FC = () => {
             membership: false,
         },
     });
+
+    const [showPopup, setShowPopup] = useState(false);
+
+    // Toggle visibility functions
+    const openModal = () => setShowPopup(true);
+    const closeModal = () => setShowPopup(false);
 
     const onSubmit = (data: FormValues) => {
         console.log('Form data', data);
@@ -125,8 +133,11 @@ const Ppartnercode1Tab2: React.FC = () => {
                         name="PartnerCodency"
                         control={control}
                         errors={errors.PartnerCodency}
-                    />
-                <button style={{ height: "27px", marginTop: "20px" }}>Pick</button>
+                />
+                <button style={{ height: "27px", marginTop: "20px" }} onClick={openModal}>Pick</button>
+                <Modal isVisible={showPopup} onClose={closeModal} title="Pick Agency">
+                    <PickAgency></PickAgency>
+                </Modal>
 
 
                 <FormField

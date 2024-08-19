@@ -58,3 +58,24 @@ export interface IApprovalInfo {
     Approved: string;
     Approved_tds: string;
 }
+
+export interface IPickAgency {
+    id: number;
+    AgencyName: string;
+    Division: string;
+    SaasCode: string;
+    AgencyCode: string;
+    Address1: string;
+    Address2: string;
+    City: string;
+    State: string;
+    Zip: number;
+    Header1:string
+}
+
+export interface IPickProject {
+    project_id: number;
+    pu: string;
+    proj_desc: string;
+    Agency_name: string;
+}
