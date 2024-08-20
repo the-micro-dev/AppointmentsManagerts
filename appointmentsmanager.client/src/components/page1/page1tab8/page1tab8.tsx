@@ -38,6 +38,7 @@ const Page1Tab8: React.FC = () => {
             setData(prevData => [...prevData, newData]);
         }
         closeModal();
+        closeDeleteModal();
     };
 
     const handleDelete = () => {
@@ -45,6 +46,7 @@ const Page1Tab8: React.FC = () => {
             setData(prevData => prevData.filter(item => item.id !== selectedRow.id));
             setSelectedRow(null);
         }
+        closeDeleteModal();
     };
 
     return (

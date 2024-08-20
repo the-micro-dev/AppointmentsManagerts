@@ -76,6 +76,7 @@ const ModalContent: React.FC<ModalContentProps> = ({ onConfirm, onCancel, editMo
                     <tr>
                         <th>Select</th>
                         <th>Code</th>
+                        <th>OpeningDate</th>
                         <th>Description</th>
                     </tr>
                 </thead>
@@ -90,6 +91,7 @@ const ModalContent: React.FC<ModalContentProps> = ({ onConfirm, onCancel, editMo
                                 />
                             </td>
                             <td>{data.code}</td>
+                            <td>03/02/1984</td>
                             <td>{data.description}</td>
                         </tr>
                     ))}

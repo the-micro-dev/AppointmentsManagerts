@@ -49,7 +49,7 @@ const FormField = <T,>({
                     return <Component type={type} {...field} />;
                 }}
             />
-            {props.errors && <div>{props.errors.message}</div>}
+            {props.errors && <div class="error-message">{props.errors.message}</div>}
         </div>
     );
 };

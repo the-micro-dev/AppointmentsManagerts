@@ -32,7 +32,7 @@ const Popup: React.FC<PopupProps> = ({
     onClose
 }) => {
     // Filtered data based on the selected filter
-    const filteredData = filter === 'all' ? data : data.filter(item => item.status === 'open');
+    const filteredData = filter === 'all' ? data : data.filter(item => selectedRows.has(item.id));
 
     const toggleRowSelection = (id: number) => {
         setSelectedRows(prev => {

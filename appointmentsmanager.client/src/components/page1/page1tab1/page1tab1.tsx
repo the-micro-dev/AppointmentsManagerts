@@ -21,6 +21,10 @@ export const Page1Tab1 = () => {
     const openModal2 = () => setIsModal2Visible(true);
     const closeModal2 = () => setIsModal2Visible(false);
 
+    const handleCloseModal = () => {
+        setSelectedModal(null);
+    };
+
     const handleSubmit = () => {
         // Handle form submission here
         console.log('Form submitted');
@@ -32,7 +36,7 @@ export const Page1Tab1 = () => {
                 <input type="radio" name="pending" defaultChecked></input>Pending
                 <input type="radio" name="pending" ></input>Current
             </div>
-            <input placeholder="find by.." style={{ width:"300px" }}></input>
+            <input placeholder="find by.." style={{ width: "300px" }}></input>
                 <table className="sample-table">
                     <thead>
                         <tr>

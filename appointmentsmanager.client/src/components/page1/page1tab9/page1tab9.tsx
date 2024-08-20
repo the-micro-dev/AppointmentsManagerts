@@ -113,7 +113,6 @@ const Page1Tab9: React.FC = () => {
     };
 
     const handleSave = () => {
-        console.log("Form data on save:", formData); // Debug line
         if (selectedRecord) {
             setData((prev) =>
                 prev.map((item) =>
@@ -124,7 +123,6 @@ const Page1Tab9: React.FC = () => {
             const newId = Math.max(...data.map((item) => item.id), 0) + 1;
             setData((prev) => [...prev, { id: newId, ...formData }]);
         }
-        console.log("Updated data:", data); // Debug line
         handleCloseChildForm();
     };
 
@@ -143,7 +141,7 @@ const Page1Tab9: React.FC = () => {
 
     const closeDeleteModal = () => {
         setIsDeleteModalVisible(false);
-        setRecordToDelete(null); // Reset recordToDelete when closing modal
+        setRecordToDelete(null); 
     };
 
     return (
@@ -159,7 +157,6 @@ const Page1Tab9: React.FC = () => {
                     control={control}
                     errors={errors}
                 />
-                {/* Other components or content */}
             </div>
             <button onClick={() => handleOpenChildForm()}>Add</button>
             <table>
