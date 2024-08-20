@@ -23,6 +23,8 @@ export interface IDistributionRecipient extends IDistribution {
     Email: string;
     MailingList: string;
     Partner: string;
+    Procurement_type: string;
+    RfpNo: number;
 }
 
 export interface HeaderFormSectionProps {
@@ -70,7 +72,8 @@ export interface IPickAgency {
     City: string;
     State: string;
     Zip: number;
-    Header1:string
+    Header1: string;
+    HandMail: boolean;
 }
 
 export interface IPickProject {
@@ -78,4 +81,27 @@ export interface IPickProject {
     pu: string;
     proj_desc: string;
     Agency_name: string;
+    Task_description: string;
+    Proc_Category: string;
+    Bid_categroy: string;
+    Approval_cat: string;
+    MM: number;
+    YYYY: number;
+    Rfp_number: number;
+    Procurement_Type: string;
+    Agency_add1: string;
+    Agency_add2: string;
+    Agency_city: string;
+    Agency_state: string;
+    Agency_zip5: number;
+    Agency_zip4: number;
+    Agency_department: string;
+    Agency_use: string;
+    Contact_title: string;
+    Contact_fname: string;
+    Contact_mname: string;
+    Contact_lname: string;
+    Contact_type: string;
+
+
 }

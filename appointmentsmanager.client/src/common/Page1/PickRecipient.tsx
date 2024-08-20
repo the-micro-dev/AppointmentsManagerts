@@ -2,8 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { IDistributionRecipient } from '../Interfaces'
 import sampledata from '../SampleFiles/pickrecipient.json'
 
+interface PickRecipientProps {
+    onSelect: (agency: IDistributionRecipient) => void;
+}
 
-const PickRecipient: React.FC = () => {
+
+const PickRecipient: React.FC<PickRecipientProps> = (onSelect) => {
     // State for storing the data
     const [data, setData] = useState<IDistributionRecipient[]>([]);
     // State for storing the search query
@@ -22,6 +26,18 @@ const PickRecipient: React.FC = () => {
         };
         fetchData();
     }, []);
+
+    const handleOk = () => {
+        const selectedRecipient = data.find(item => item.id === selectedId);
+        if (typeof onSelect === 'function') {
+            const selectedRecipient = data.find(item => item.id === selectedId);
+            if (selectedRecipient) {
+                onSelect(selectedRecipient);
+            }
+        } else {
+            console.error('onSelect is not a function');
+        }
+    };
 
     // Filter data based on search query
     const filteredData =
@@ -67,6 +83,7 @@ const PickRecipient: React.FC = () => {
                     ))}
                 </tbody>
             </table>
+            <button style={{ marginTop: "10px" }} onClick={handleOk}>Ok</button>
         </div>
     );
 };

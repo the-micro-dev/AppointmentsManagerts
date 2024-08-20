@@ -32,6 +32,7 @@
     width: 30px;
     height: 30px;
     cursor: pointer;
+    color:black;
 }
 
 .modal-content h2 {

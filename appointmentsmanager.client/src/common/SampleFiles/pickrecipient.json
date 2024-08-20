@@ -4,13 +4,17 @@
     "FirstName": "first",
     "Email": "last@gmail.com",
     "MailingList": "M",
-    "Partner": "East"
+    "Partner": "East",
+    "Procurement_type": "Ty",
+    "RfpNo": 123
   },
   {
     "LastName": "last2",
     "FirstName": "first2",
     "Email": "last123@gmail.com",
     "MailingList": "FM",
-    "Partner": "West"
+    "Partner": "West",
+    "Procurement_type": "Hb",
+    "RfpNo": 345
   }
 ]

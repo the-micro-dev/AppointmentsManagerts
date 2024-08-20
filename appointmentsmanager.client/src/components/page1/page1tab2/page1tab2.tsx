@@ -219,7 +219,7 @@ const Page1Tab2: React.FC = () => {
                         <input style={{ height: "15px", marginTop: "20px" }}type="checkbox"></input>
                         <label>HandMail</label>
                     </div>
-                    <button style={{ height: "27px", marginTop: "20px" }} onClick={openModal1 }>Pick</button>
+                    <button style={{ height: "27px", marginTop: "20px" }} onClick={openModal1}>Pick</button>
                     <Modal isVisible={showPopup1} onClose={closeModal1} title="Pick Recipient">
                         <PickRecipient></PickRecipient>
                     </Modal>

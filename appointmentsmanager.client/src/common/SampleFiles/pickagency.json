@@ -10,7 +10,8 @@
     "City": "city name",
     "State": "state",
     "Zip": "123451",
-    "Header1": ""
+    "Header1": "",
+    "HandMail": true
   },
   {
     "id": 2,
@@ -23,7 +24,8 @@
     "City": "city name",
     "State": "state",
     "Zip": "123451",
-    "Header1": ""
+    "Header1": "",
+    "HandMail": false
   },
   {
     "id": 3,
@@ -36,6 +38,7 @@
     "City": "city name",
     "State": "state",
     "Zip": "123451",
-    "Header1": ""
+    "Header1": "",
+    "HandMail": false
   }
 ]

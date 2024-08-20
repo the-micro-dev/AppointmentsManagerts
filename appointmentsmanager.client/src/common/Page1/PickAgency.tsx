@@ -3,7 +3,12 @@ import { IPickAgency } from '../Interfaces'
 import sampledata from '../SampleFiles/pickagency.json'
 
 
-const PickAgency: React.FC = () => {
+interface PickAgencyProps {
+    onSelect: (agency: IPickAgency) => void;
+}
+
+
+const PickAgency: React.FC<PickAgencyProps> = ({onSelect }) => {
     // State for storing the data
     const [data, setData] = useState<IPickAgency[]>([]);
     // State for storing the search query
@@ -24,6 +29,18 @@ const PickAgency: React.FC = () => {
         fetchData();
     }, []);
     */
+
+    const handleOk = () => {
+        const selectedAgency = data.find(item => item.id === selectedId);
+        if (typeof onSelect === 'function') {
+            const selectedAgency = data.find(item => item.id === selectedId);
+            if (selectedAgency) {
+                onSelect(selectedAgency);
+            }
+        } else {
+            console.error('onSelect is not a function');
+        }
+    };
 
     useEffect(() => {
         const fetchData = async () => {
@@ -91,6 +108,7 @@ const PickAgency: React.FC = () => {
                     ))}
                 </tbody>
             </table>
+            <button style={{ marginTop: "10px" }} onClick={handleOk}>Ok</button>
         </div>
     );
 };
