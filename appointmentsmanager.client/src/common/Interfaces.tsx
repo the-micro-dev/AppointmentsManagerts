@@ -25,6 +25,9 @@ export interface IDistributionRecipient extends IDistribution {
     Partner: string;
     Procurement_type: string;
     RfpNo: number;
+    Target_mm: number;
+    Target_yyyy: number;
+    Division: string;
 }
 
 export interface HeaderFormSectionProps {

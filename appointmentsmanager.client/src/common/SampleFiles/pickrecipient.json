@@ -1,20 +1,28 @@
 [
   {
+    "id": 1,
     "LastName": "last",
     "FirstName": "first",
     "Email": "last@gmail.com",
     "MailingList": "M",
     "Partner": "East",
     "Procurement_type": "Ty",
-    "RfpNo": 123
+    "RfpNo": 123,
+    "Target_yyyy": 2022,
+    "Target_mm": 12,
+    "Division": "div1"
   },
   {
+    "id": 2,
     "LastName": "last2",
     "FirstName": "first2",
     "Email": "last123@gmail.com",
     "MailingList": "FM",
     "Partner": "West",
     "Procurement_type": "Hb",
-    "RfpNo": 345
+    "RfpNo": 345,
+    "Target_yyyy": 2022,
+    "Target_mm": 12,
+    "Division": "div2"
   }
 ]

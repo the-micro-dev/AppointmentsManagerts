@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { IPickProject } from '../Interfaces';
 import sampledata from '../SampleFiles/pickproject.json';
 
+interface PickProjectProps {
+    onSelect: (project: IDistributionRecipient) => void;
+}
 
-
-const PickProject: React.FC = () => {
+const PickProject: React.FC<PickProjectProps> = ({ onSelect }) => {
     // State for storing the data
     const [data, setData] = useState<IPickProject[]>([]);
     const [query, setQuery] = useState<string>('');

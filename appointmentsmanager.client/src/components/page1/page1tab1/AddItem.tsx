@@ -8,10 +8,11 @@ import Modal from '../../../common/Modal/Modal';
 interface AddItemProps {
     selectedAgency: IPickAgency;
     selectedRecipient: IDistributionRecipient;
+    selectedProject: IPickProject;
     onSave: (data: any) => void;
 }
 
-const AddItem: React.FC<AddItemProps> = ({ selectedAgency, selectedRecipient, onSave }) => {
+const AddItem: React.FC<AddItemProps> = ({ selectedAgency, selectedRecipient, selectedProject, onSave }) => {
 
 
     const [showPopup, setShowPopup] = useState(false);
@@ -20,8 +21,7 @@ const AddItem: React.FC<AddItemProps> = ({ selectedAgency, selectedRecipient, on
     const [formData, setFormData] = useState({
         agency: selectedAgency,
         recipient: selectedRecipient,
-        mainAddress: '',
-        // Add other fields here
+        project:selectedProject
     });
 
     // Toggle visibility functions
@@ -39,6 +39,10 @@ const AddItem: React.FC<AddItemProps> = ({ selectedAgency, selectedRecipient, on
     };
     const handleRecipientSelect = (recipient: any) => {
         setFormData(prev => ({ ...prev, recipient }));
+        closeModal1();
+    };
+    const handleProjectSelect = (project: any) => {
+        setFormData(prev => ({ ...prev, project }));
         closeModal2();
     };
 
@@ -55,16 +59,17 @@ const AddItem: React.FC<AddItemProps> = ({ selectedAgency, selectedRecipient, on
                    
                     <button style={{ margin: "auto 0 auto auto" }} onClick={openModal2}>Pick Project</button>
                     <Modal isVisible={showPopup2} onClose={closeModal2} title="Pick Agency">
-                        <PickProject></PickProject>
+                        <PickProject onSelect={handleProjectSelect }></PickProject>
                     </Modal>
                     </div>
-                <input></input>
+                <input defaultValue={formData.project?.project_id}></input>
                     <FormField
-                        label="Project"
-                        name="Project"
+                    label="Project"
+                    name="Project"
+                    defaultValue={formData.project?.pu}
                     />
-                    <input>
-                    </input><textarea></textarea>
+                <input defaultValue={formData.project?.Agency_name}>
+                </input><textarea defaultValue={formData.project?.proj_desc}></textarea>
                 </section>
 
             <section >
@@ -127,10 +132,10 @@ const AddItem: React.FC<AddItemProps> = ({ selectedAgency, selectedRecipient, on
                     </Modal>
                 </div>
                 <div style={{ display:"flex",gap:"5px" }}>
-                    <input></input>
-                    <input>
+                    <input defaultValue={formData.recipient?.FirstName}></input>
+                    <input defaultValue={formData.recipient?.Email}>
                     </input>
-                    <input></input>
+                    <input defaultValue={formData.recipient?.Partner}></input>
                 </div>
                 <FormField
                     label="RfpNo"
@@ -143,22 +148,27 @@ const AddItem: React.FC<AddItemProps> = ({ selectedAgency, selectedRecipient, on
                 <FormField
                     label="ProcuremenetType"
                     name="ProcuremenetType"
+                    defaultValue={formData.recipient?.Procurement_type}
                 />
                 <FormField
                     label="Approval_Category"
                     name="Approval_Category"
+                    defaultValue={formData.recipient?.FirstName}
                 />
                 <FormField
                     label="Target_mm"
                     name="Target_mm"
+                    defaultValue={formData.recipient?.Target_mm}
                 />
                 <FormField
                     label="Target_yy"
                     name="Target_yy"
+                    defaultValue={formData.recipient?.Target_yyyy}
                 />
                 <FormField
                     label="Division"
                     name="Division"
+                    defaultValue={formData.recipient?.Division}
                 />
             </section>
             <button onClick={handleSave }>Save</button>

@@ -3,11 +3,11 @@ import { IDistributionRecipient } from '../Interfaces'
 import sampledata from '../SampleFiles/pickrecipient.json'
 
 interface PickRecipientProps {
-    onSelect: (agency: IDistributionRecipient) => void;
+    onSelect: (recipient: IDistributionRecipient) => void;
 }
 
 
-const PickRecipient: React.FC<PickRecipientProps> = (onSelect) => {
+const PickRecipient: React.FC<PickRecipientProps> = ({ onSelect }) => {
     // State for storing the data
     const [data, setData] = useState<IDistributionRecipient[]>([]);
     // State for storing the search query
@@ -29,13 +29,16 @@ const PickRecipient: React.FC<PickRecipientProps> = (onSelect) => {
 
     const handleOk = () => {
         const selectedRecipient = data.find(item => item.id === selectedId);
-        if (typeof onSelect === 'function') {
+        /*if (typeof onSelect === 'function') {
             const selectedRecipient = data.find(item => item.id === selectedId);
             if (selectedRecipient) {
                 onSelect(selectedRecipient);
             }
         } else {
             console.error('onSelect is not a function');
+        }*/
+        if (selectedRecipient) {
+            onSelect(selectedRecipient);
         }
     };
 

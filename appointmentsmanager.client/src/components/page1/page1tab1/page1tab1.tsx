@@ -19,6 +19,7 @@ export const Page1Tab1: React.FC = () => {
     const [isCloneModalVisible, setIsCloneModalVisible] = useState<boolean>(false);
     const [selectedAgency, setSelectedAgency] = useState<IPickAgency>(null);
     const [selectedRecipient, setSelectedRecipient] = useState<IDistributionRecipient>(null); 
+    const [selectedProject, setselectedProject] = useState<IDistributionRecipient>(null); 
 
     // Toggle visibility functions
     const openModal1 = () => setIsModal1Visible(true);
@@ -60,7 +61,7 @@ export const Page1Tab1: React.FC = () => {
                     onClose={() => setIsAddModalVisible(false)}
                     title="Add Details"
                 >
-                    <AddItem selectedAgency={selectedAgency} onSave={handleSubmit} selectedRecipient={selectedRecipient }></AddItem>
+                    <AddItem selectedAgency={selectedAgency} onSave={handleSubmit} selectedRecipient={selectedRecipient} selectedProject={selectedProject }></AddItem>
                 </Modal>
             )}
             <table className="sample-table">
