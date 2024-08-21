@@ -2,6 +2,7 @@ import './page1tab1.css';
 import React, { useState } from 'react';
 import Modal from '../../../common/Modal/Modal';
 import AddItem from './AddItem'
+import CloneModal from './CloneItem'
 
 export const Page1Tab1: React.FC = () => {
     const columns = ['Name', 'Age', 'City', 'Name1', 'Age1', 'City1', 'Name2', 'Age2', 'City2', 'Name3', 'Age3', 'City3'];
@@ -20,6 +21,7 @@ export const Page1Tab1: React.FC = () => {
     const [selectedAgency, setSelectedAgency] = useState<IPickAgency>(null);
     const [selectedRecipient, setSelectedRecipient] = useState<IDistributionRecipient>(null); 
     const [selectedProject, setselectedProject] = useState<IDistributionRecipient>(null); 
+    const [selectedData, setSelectedData] = useState<any[]>([]);
 
     // Toggle visibility functions
     const openModal1 = () => setIsModal1Visible(true);
@@ -41,6 +43,15 @@ export const Page1Tab1: React.FC = () => {
     const handleSubmit = () => {
         console.log('Form submitted');
         closeModal1();
+        closeModal2();
+        setIsCloneModalVisible(false);
+        setIsAddModalVisible(false);
+    };
+
+    const handleClone = (selectedRows: any[]) => {
+        setSelectedData(selectedRows);
+        setIsCloneModalVisible(false);
+        setIsAddModalVisible(true);
     };
 
     return (
@@ -62,6 +73,23 @@ export const Page1Tab1: React.FC = () => {
                     title="Add Details"
                 >
                     <AddItem selectedAgency={selectedAgency} onSave={handleSubmit} selectedRecipient={selectedRecipient} selectedProject={selectedProject }></AddItem>
+                </Modal>
+            )}
+            {dropdownValue === 'Clone' && isCloneModalVisible && (
+                <CloneModal
+                    isVisible={isCloneModalVisible}
+                    onClose={() => setIsCloneModalVisible(false)}
+                    onClone={handleClone}
+                    data={data}
+                />
+            )}
+            {selectedData.length > 0 && isAddModalVisible && (
+                <Modal
+                    isVisible={isAddModalVisible}
+                    onClose={() => setIsAddModalVisible(false)}
+                    title="Add Details"
+                >
+                    <AddItem selectedAgency={selectedAgency} onSave={handleSubmit} selectedRecipient={selectedRecipient} selectedProject={selectedProject}></AddItem>
                 </Modal>
             )}
             <table className="sample-table">
