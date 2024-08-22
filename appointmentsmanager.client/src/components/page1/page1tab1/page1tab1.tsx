@@ -1,27 +1,35 @@
 import './page1tab1.css';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Modal from '../../../common/Modal/Modal';
 import AddItem from './AddItem'
 import CloneModal from './CloneItem'
+import { useData } from '../../../common/DataContextProvider';
+import sampledata from './cloneitem.json';
+import { ICP1, IDistributionRecipient, IPickAgency } from '../../../common/Interfaces';
+import { useTab } from '../../../common/TabContextProvider'
+
 
 export const Page1Tab1: React.FC = () => {
-    const columns = ['Name', 'Age', 'City', 'Name1', 'Age1', 'City1', 'Name2', 'Age2', 'City2', 'Name3', 'Age3', 'City3'];
-    const data = [
-        { id: 1, name: '', age: 25, city: '', name1: '', age1: 25, city1: '', name2: '', age2: 25, city2: '', name3: '', age3: 25, city3: '' },
-        { id: 2, name: '', age: 30, city: '', name1: '', age1: 25, city1: '', name2: '', age2: 25, city2: '', name3: '', age3: 25, city3: '' },
-        { id: 3, name: '', age: 28, city: '', name1: '', age1: 25, city1: '', name2: '', age2: 25, city2: '', name3: '', age3: 25, city3: '' },
-        { id: 4, name: '', age: 35, city: '', name1: '', age1: 25, city1: '', name2: '', age2: 25, city2: '', name3: '', age3: 25, city3: '' },
-    ];
-
+    const { state, setState } = useData();
     const [isModal1Visible, setIsModal1Visible] = useState<boolean>(false);
     const [isModal2Visible, setIsModal2Visible] = useState<boolean>(false);
     const [dropdownValue, setDropdownValue] = useState<string>('');
     const [isAddModalVisible, setIsAddModalVisible] = useState<boolean>(false);
     const [isCloneModalVisible, setIsCloneModalVisible] = useState<boolean>(false);
     const [selectedAgency, setSelectedAgency] = useState<IPickAgency>(null);
-    const [selectedRecipient, setSelectedRecipient] = useState<IDistributionRecipient>(null); 
-    const [selectedProject, setselectedProject] = useState<IDistributionRecipient>(null); 
+    const [selectedRecipient, setSelectedRecipient] = useState<IDistributionRecipient>(null);
+    const [selectedProject, setselectedProject] = useState<IPickProject>(null); 
     const [selectedData, setSelectedData] = useState<any[]>([]);
+    const [cp1data, setcp1Data] = useState<ICP1[]>([]);
+    const [selectedRows, setSelectedRows] = useState<number[]>([]);
+    const { setActiveTab } = useTab();
+
+    const handleCheckboxChange = (id: number) => {
+        setSelectedRows(prev =>
+            prev.includes(id) ? prev.filter(rowId => rowId !== id) : [...prev, id]
+        );
+        setActiveTab('subcontent2');
+    };
 
     // Toggle visibility functions
     const openModal1 = () => setIsModal1Visible(true);
@@ -40,15 +48,41 @@ export const Page1Tab1: React.FC = () => {
         }
     };
 
-    const handleSubmit = () => {
-        console.log('Form submitted');
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const result: ICP1[] = sampledata;
+                setcp1Data(result);
+            } catch (error: any) {
+                console.error('Error fetching data:', error.message);
+            }
+        };
+
+        fetchData();
+    }, []);
+
+    const handleSubmit = (formData: any) => {
+
+        setState(prevState => {
+            const updatedState = {
+                ...prevState,
+                project: formData.project
+            };
+            return updatedState;
+        });
         closeModal1();
         closeModal2();
         setIsCloneModalVisible(false);
         setIsAddModalVisible(false);
     };
 
+
     const handleClone = (selectedRows: any[]) => {
+        console.log("project" + selectedProject);
+        setState(prevState => ({
+            ...prevState,
+            project: selectedProject
+        }));
         setSelectedData(selectedRows);
         setIsCloneModalVisible(false);
         setIsAddModalVisible(true);
@@ -80,7 +114,7 @@ export const Page1Tab1: React.FC = () => {
                     isVisible={isCloneModalVisible}
                     onClose={() => setIsCloneModalVisible(false)}
                     onClone={handleClone}
-                    data={data}
+                    data={cp1data}
                 />
             )}
             {selectedData.length > 0 && isAddModalVisible && (
@@ -92,29 +126,77 @@ export const Page1Tab1: React.FC = () => {
                     <AddItem selectedAgency={selectedAgency} onSave={handleSubmit} selectedRecipient={selectedRecipient} selectedProject={selectedProject}></AddItem>
                 </Modal>
             )}
-            <table className="sample-table">
+            <table className="sample-table" style={{ overflowX: "scroll", display:"block" }}>
                 <thead>
                     <tr>
-                        {columns.map(column => (
-                            <th key={column}>{column}</th>
-                        ))}
+                        <th>select</th>
+                        <th>Appr</th>
+                        <th>S</th>
+                        <th>PrNo</th>
+                        <th>Contract</th>
+                        <th>Replacement</th>
+                        <th>AgySAAScode</th>
+                        <th>PartnerCode</th>
+                        <th>Partner</th>
+                        <th>MptMagiccode</th>
+                        <th>MptName</th>
+                        <th>VendorMagiccode</th>
+                        <th>VendorName</th>
+                        <th>Frequency</th>
+                        <th>Total</th>
+                        <th>Acquisition</th>
+                        <th>Approval</th>
+                        <th>AthtyDate</th>
+                        <th>ApprovedBy</th>
+                        <th>AprrDate</th>
+                        <th>RollDate</th>
+                        <th>Add_UserID</th>
+                        <th>Add_tds</th>
+                        <th>Mod_UserID</th>
+                        <th>Mod_tds</th>
+                        <th>OldOrderVenCode</th>
+                        <th>OldMPTCde</th>
+
                     </tr>
                 </thead>
                 <tbody>
-                    {data.map(row => (
+                    {sampledata.map(row => (
                         <tr key={row.id}>
-                            <td>{row.name}</td>
-                            <td>{row.age}</td>
-                            <td>{row.city}</td>
-                            <td>{row.name1}</td>
-                            <td>{row.age1}</td>
-                            <td>{row.city1}</td>
-                            <td>{row.name2}</td>
-                            <td>{row.age2}</td>
-                            <td>{row.city2}</td>
-                            <td>{row.name3}</td>
-                            <td>{row.age3}</td>
-                            <td>{row.city3}</td>
+                            <td>
+                                <input
+                                    type="checkbox"
+                                    checked={selectedRows.includes(row.id)}
+                                    onChange={() => handleCheckboxChange(row.id)}
+                                />
+                            </td>
+                            <td>{row.Appr}</td>
+                            <td>{row.S}</td>
+                            <td>{row.Prno}</td>
+                            <td>{row.Cp1no}</td>
+                            <td>{row.Contract}</td>
+                            <td>{row.Replacemnt}</td>
+                            <td>{row.AgySAAScode}</td>
+                            <td>{row.PartnerCode}</td>
+                            <td>{row.partner}</td>
+                            <td>{row.MptMagiccode}</td>
+                            <td>{row.MptName}</td>
+                            <td>{row.VendorMagiccode}</td>
+                            <td>{row.VendorName}</td>
+                            <td>{row.Frequency}</td>
+                            <td>{row.Total}</td>
+                            <td>{row.Acquisition}</td>
+                            <td>{row.Approval}</td>
+                            <td>{row.AthtyDate}</td>
+                            <td>{row.ApprovedBy}</td>
+                            <td>{row.ApprDate}</td>
+                            <td>{row.RollDate}</td>
+                            <td>{row.Add_UserID}</td>
+                            <td>{row.Add_tds}</td>
+                            <td>{row.Mod_UserID}</td>
+                            <td>{row.Mod_tds}</td>
+                            <td>{row.OldOrderVenCode}</td>
+                            <td>{row.OldMPTCde}</td>
+                            <td>{row.OldMPTCde}</td>
                         </tr>
                     ))}
                 </tbody>

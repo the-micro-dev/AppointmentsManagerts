@@ -7,6 +7,7 @@ import Modal from '../../../common/Modal/Modal';
 import PickAgency from '../../../common/Page1/PickAgency'
 import PickRecipient from '../../../common/Page1/PickRecipient'
 import React, { useState, useEffect } from 'react';
+import { useData } from '../../../common/DataContextProvider';
 
 // Define validation schema with Yup
 const schema = Yup.object().shape({
@@ -82,6 +83,7 @@ const Page1Tab2: React.FC = () => {
 
     const [showPopup, setShowPopup] = useState(false);
     const [showPopup1, setShowPopup1] = useState(false);
+    const { state, setState } = useData();
 
     // Toggle visibility functions
     const openModal = () => { setShowPopup(true); setShowPopup1 (false)}
@@ -95,16 +97,35 @@ const Page1Tab2: React.FC = () => {
         console.log('Form data', data);
     };
 
+    const handleAgencySelect = (agency: any) => {
+
+        setState(prevState => {
+            const updatedState = {
+                ...prevState,
+                agency: agency
+            };
+            console.log('up'+updatedState);
+            return updatedState;
+        });
+        console.log('updated state-')
+    };
+
+    const handleRecipientSelect = (recipient: any) => {
+        setState(prev => ({ ...prev, recipient:recipient }));
+        closeModal1();
+    };
+
     return (
         <div>
             <section className="upper-section">
                 <div style={{ display: "flex" }} >
                     <FormField
                         label="Consultant"
-                        name="Consultant"
+                        name="Agency_name"
                         control={control}
                         errors={errors.Consultant}
                         className="small-input disabled"
+                        defaultValue={state.project?.Agency_name}
                     />
                     <FormField
                         label="Project"
@@ -112,6 +133,7 @@ const Page1Tab2: React.FC = () => {
                         control={control}
                         errors={errors.Project}
                         className="small-input disabled"
+                        defaultValue={ state.project?.project_id}
                     />
                     <input style={{ height: "27px", marginTop: "25px", width: "30px" }} className="disabled"></input>
                 </div>
@@ -135,14 +157,15 @@ const Page1Tab2: React.FC = () => {
             </section>
             <form onSubmit={handleSubmit(onSubmit)} className="form-container tab2">
                     <FormField
-                        label="Agency(Partner)"
-                        name="PartnerCodency"
-                        control={control}
-                        errors={errors.PartnerCodency}
+                    label="Agency(Partner)"
+                    name="PartnerCodency"
+                    control={control}
+                    errors={errors.PartnerCodency}
+                    defaultValue={state.agency?.AgencyName}
                 />
                 <button style={{ height: "27px", marginTop: "20px" }} onClick={openModal}>Pick</button>
                 <Modal isVisible={showPopup} onClose={closeModal} title="Pick Agency">
-                    <PickAgency></PickAgency>
+                    <PickAgency onSelect={handleAgencySelect}></PickAgency>
                 </Modal>
 
 
@@ -221,7 +244,7 @@ const Page1Tab2: React.FC = () => {
                     </div>
                     <button style={{ height: "27px", marginTop: "20px" }} onClick={openModal1}>Pick</button>
                     <Modal isVisible={showPopup1} onClose={closeModal1} title="Pick Recipient">
-                        <PickRecipient></PickRecipient>
+                        <PickRecipient onSelect={handleRecipientSelect}></PickRecipient>
                     </Modal>
                 </div>
                 <FormField
@@ -229,6 +252,7 @@ const Page1Tab2: React.FC = () => {
                     name="email"
                     control={control}
                     errors={errors.email}
+                    defaultValue={state.recipient?.Email }
                 />
                 <div></div>
                 
@@ -363,7 +387,7 @@ const Page1Tab2: React.FC = () => {
 
                 <button type="submit">Edit </button>
                 <label></label>
-                <div class="buttons-section">
+                <div className="buttons-section">
                     <button type="submit">Submit</button>
                     <button type="submit">Edit</button>
                     <button type="submit">Undo</button>

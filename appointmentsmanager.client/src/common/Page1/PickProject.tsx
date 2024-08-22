@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { ICP1 } from '../Interfaces';
 import { IPickProject } from '../Interfaces';
 import sampledata from '../SampleFiles/pickproject.json';
 
 interface PickProjectProps {
-    onSelect: (project: IDistributionRecipient) => void;
+    onSelect: (project: IPickProject) => void;
 }
 
 const PickProject: React.FC<PickProjectProps> = ({ onSelect }) => {

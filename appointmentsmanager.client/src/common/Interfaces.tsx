@@ -105,6 +105,41 @@ export interface IPickProject {
     Contact_mname: string;
     Contact_lname: string;
     Contact_type: string;
+}
 
+export interface ICP1 {
+    id: number;
+    Appr: number;
+    S: string;
+    PrNo: string;
+    Cp1no: number;
+    contract: string;
+    Replacement: string;
+    AgySAAScode: number;
+    PartnerCode: number;
+    Partner: string;
+    MptMagiccode: number;
+    MptName: string;
+    vendorMagiccode: number;
+    VendorName: string;
+    Frequency: string;
+    Total: number;
+    Acquisition: string;
+    Approval: string;
+    AthtyDate: string //date;
+    ApprovedBy: string;
+    AprrDate: string //date;
+    RollDate: string //date;
+    Add_UserID: string;
+    Add_tds: string //date;
+    Mod_UserID: string;
+    Mod_tds: string //date;
+    OldOrderVenCode: string;
+    OldMPTCde: string;
+}
 
+export interface IComposite {
+    agency: IPickAgency | null;
+    recipient: IDistributionRecipient | null;
+    project: IPickProject | null;
 }

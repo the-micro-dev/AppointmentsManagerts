@@ -12,10 +12,11 @@ import Page1Tab7 from './page1tab7/page1tab7'
 import Page1Tab9 from './page1tab9/page1tab9'
 import Page1Tab10 from './page1tab10/page1tab10'
 import Page1Tab11 from './page1tab11/page1tab11'
+import { TabProvider, useTab } from '../../common/TabContextProvider'
 
 
-const Page1 = () => {
-    const [activeTab, setActiveTab] = useState('subcontent1'); // Local state to manage active tab
+const Page1Content: React.FC = () => {
+    const { activeTab, setActiveTab } = useTab(); // Local state to manage active tab
 
     const handleTabChange = (tab) => {
         setActiveTab(tab);
@@ -111,5 +112,11 @@ const Page1 = () => {
         </div>
     );
 }
+
+const Page1: React.FC = () => (
+    <TabProvider>
+        <Page1Content />
+    </TabProvider>
+);
 
 export default Page1;

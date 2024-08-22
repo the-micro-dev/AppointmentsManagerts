@@ -47,7 +47,19 @@ const AddItem: React.FC<AddItemProps> = ({ selectedAgency, selectedRecipient, se
     };
 
     const handleSave = () => {
+        console.log('formdata', formData)
         onSave(formData);
+    };
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({
+            ...prev,
+            project: {
+                ...prev.project,
+                [name]: value
+            }
+        }));
     };
 
 
@@ -62,14 +74,15 @@ const AddItem: React.FC<AddItemProps> = ({ selectedAgency, selectedRecipient, se
                         <PickProject onSelect={handleProjectSelect }></PickProject>
                     </Modal>
                     </div>
-                <input defaultValue={formData.project?.project_id}></input>
-                    <FormField
-                    label="Project"
-                    name="Project"
-                    defaultValue={formData.project?.pu}
-                    />
-                <input defaultValue={formData.project?.Agency_name}>
-                </input><textarea defaultValue={formData.project?.proj_desc}></textarea>
+                <input defaultValue={formData.project?.project_id} onChange={handleChange} name="project_id"></input>
+                <FormField
+                label="Project"
+                name="Project"
+                defaultValue={formData.project?.pu}
+                onChange={handleChange}
+                />
+                <input defaultValue={formData.project?.Agency_name} name="Agency_name" onChange={handleChange}>
+                </input><textarea defaultValue={formData.project?.proj_desc} name="proj_desc" onChange={handleChange}></textarea>
                 </section>
 
             <section >
