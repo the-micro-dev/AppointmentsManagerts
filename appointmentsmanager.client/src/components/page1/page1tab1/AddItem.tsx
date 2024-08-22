@@ -58,7 +58,7 @@ const AddItem: React.FC<AddItemProps> = ({ selectedAgency, selectedRecipient, se
             project: {
                 ...prev.project,
                 [name]: value
-            }
+            } 
         }));
     };
 
