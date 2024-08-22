@@ -66,7 +66,9 @@ export const Page1Tab1: React.FC = () => {
         setState(prevState => {
             const updatedState = {
                 ...prevState,
-                project: formData.project
+                project: formData.project,
+                agency: formData.agency,
+                recipient:formData.recipient
             };
             return updatedState;
         });
@@ -81,7 +83,9 @@ export const Page1Tab1: React.FC = () => {
         console.log("project" + selectedProject);
         setState(prevState => ({
             ...prevState,
-            project: selectedProject
+            project: formData.project,
+            agency: formData.agency,
+            recipient: formData.recipient
         }));
         setSelectedData(selectedRows);
         setIsCloneModalVisible(false);
