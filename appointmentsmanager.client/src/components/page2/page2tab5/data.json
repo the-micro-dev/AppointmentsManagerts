@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "code": "John Doe",
+    "description": "John Doe",
+    "status": "open",
+    "catcode": 123456,
+    "FA": "E",
+    "FObject": 3561123
+  },
+  {
+    "id": 2,
+    "code": "Jane Smith",
+    "description": "Jane Smith",
+    "status": "closed",
+    "catcode": 123243456,
+    "FA": "A",
+    "FObject": 351261123
+  },
+  {
+    "id": 3,
+    "code": "Jim Brown",
+    "description": "Jim Brown",
+    "status": "open",
+    "catcode": 1256,
+    "FA": "E",
+    "FObject": 35123
+  },
+  {
+    "id": 4,
+    "code": "Jack White",
+    "description": "Jack White",
+    "status": "closed",
+    "catcode": 14562,
+    "FA": "",
+    "FObject": 234
+  },
+  {
+    "id": 5,
+    "code": "Jill Black",
+    "description": "Jill Black",
+    "status": "open",
+    "catcode": 123456,
+    "FA": "E",
+    "FObject": 3561123
+  },
+  {
+    "id": 6,
+    "code": "Sarah Connor",
+    "description": "Sarah Connor",
+    "status": "open",
+    "catcode": 123456,
+    "FA": "E",
+    "FObject": 3561123
+  },
+  {
+    "id": 7,
+    "code": "Kyle Reese",
+    "description": "Kyle Reese",
+    "status": "closed",
+    "catcode": 123456,
+    "FA": "E",
+    "FObject": 3561123
+  },
+  {
+    "id": 8,
+    "code": "T-800",
+    "description": "T-800",
+    "status": "open",
+    "catcode": 123456,
+    "FA": "E",
+    "FObject": 3561123
+  },
+  {
+    "id": 9,
+    "code": "T-1000",
+    "description": "T-1000",
+    "status": "closed",
+    "catcode": 123456,
+    "FA": "E",
+    "FObject": 3561123
+  },
+  {
+    "id": 10,
+    "code": "T-X",
+    "description": "T-X",
+    "status": "open",
+    "catcode": 123456,
+    "FA": "E",
+    "FObject": 3561123
+  }
+]

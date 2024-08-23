@@ -1,0 +1,19 @@
+.page1 {
+    margin: 50px;
+    border: 3px solid rgba(3, 56, 119, 255);
+}
+
+.sub-navbar{
+    background: rgba(3,56,119,255);
+    color: white;
+    display:flex;
+}
+li{
+    margin-right:5px;
+    padding:5px;
+}
+
+.subcontent{
+    /*overflow:scroll;*/
+    padding:20px;
+}
