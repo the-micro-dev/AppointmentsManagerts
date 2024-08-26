@@ -5,6 +5,10 @@ import Page2Tab3 from './page2tab3/page2tab3'
 import Page2Tab4 from './page2tab4/page2tab4'
 import Page2Tab5 from './page2tab5/page2tab5'
 import Page2Tab6 from './page2tab6/page2tab6'
+import Page2Tab7 from './page2tab7/page2tab7'
+import Page2Tab8 from './page2tab8/page2tab8'
+import Page2Tab9 from './page2tab9/page2tab9'
+import Page2Tab10 from './page2tab10/page2tab10'
 import { TabProvider, useTab } from '../../common/TabContextProvider'
 
 
@@ -79,12 +83,6 @@ const Page2Content: React.FC = () => {
                     >
                         Sub Item 10
                     </li>
-                    <li
-                        className={activeTab === 'subcontent11' ? 'active' : ''}
-                        onClick={() => handleTabChange('subcontent11')}
-                    >
-                        Sub Item 11
-                    </li>
                 </ul>
             </div>
             <div className="subcontent">
@@ -94,7 +92,10 @@ const Page2Content: React.FC = () => {
                 {activeTab === 'subcontent4' && <Page2Tab4 />}
                 {activeTab === 'subcontent5' && <Page2Tab5 />}
                 {activeTab === 'subcontent6' && <Page2Tab6 />}
-
+                {activeTab === 'subcontent7' && <Page2Tab7 />}
+                {activeTab === 'subcontent8' && <Page2Tab8 />}
+                {activeTab === 'subcontent9' && <Page2Tab9 />}
+                {activeTab === 'subcontent10' && <Page2Tab10 />}
             </div>
         </div>
     );
