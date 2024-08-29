@@ -1,0 +1,15 @@
+.reviewcodes-header {
+    display: flex;
+    gap: 30px;
+    margin: 10px;
+}
+
+.prodcatcode-dataentry{
+    margin:inherit;
+    display:flex;
+    flex-direction:column;
+}
+
+.prodcatcode-dataentry h4{
+    margin:0px
+}
