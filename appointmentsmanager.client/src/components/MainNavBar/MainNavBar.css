@@ -22,3 +22,59 @@ a {
     color: white;
     text-decoration:none;
 }
+
+/* src/NavBar.css */
+
+.main-navbar {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+
+    .main-navbar a {
+        color: white;
+        padding: 10px;
+        text-decoration: none;
+    }
+
+.active-link {
+    font-weight: bold;
+    color: yellow; /* Highlight active link */
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-toggle {
+    color: white;
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width:auto;
+    max-width:max-content;
+    border-radius: 4px;
+    z-index: 1000; /* Ensures dropdown appears above other content */
+}
+
+        .dropdown-menu li a {
+            color: black;
+            padding: 10px;
+            display: block;
+            text-decoration: none;
+            width:max-content;
+        }
+
+            .dropdown-menu li a:hover {
+                background-color: rgba(3,56,119,255);
+            }
