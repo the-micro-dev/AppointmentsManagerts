@@ -40,8 +40,8 @@ const DataEntry: React.FC<DataEntryProps> = ({ record, onSave }) => {
     return (
         <div className="prodcatcode-dataentry">
 
-           
-            <div className="table-three-columns" style={{ border: "1px solid #ccc", padding: "50px" }}>
+
+            <div className="table-three-columns" style={{ border: "1px solid #ccc", padding: "50px", pointerEvents: "none", background:"lightgrey" }}>
                 <h4> Data from View</h4>
                 <div >
                     <h4>
@@ -113,7 +113,8 @@ const DataEntry: React.FC<DataEntryProps> = ({ record, onSave }) => {
                         name="id"
                         value={formData.id}
                         onChange={handleChange}
-                        className="small-width-input"
+                            className="small-width-input"
+                            style={{ pointerEvents: "none", background: "lightgrey" }}
                     />
                 </h4>
                 <h4>
