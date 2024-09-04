@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Approval from './Approval'
+import ReviewCodes from './UnArchive'
 import { useLocation } from 'react-router-dom'
 
 
@@ -10,7 +11,7 @@ const Page6Content: React.FC = () => {
         <>
             {pathname === '/directorApproval' && <Approval></Approval>
             }
-            {pathname === '/unarchive' && <></>}
+            {pathname === '/unarchive' && <ReviewCodes></ReviewCodes>}
         </>
     );
 }
