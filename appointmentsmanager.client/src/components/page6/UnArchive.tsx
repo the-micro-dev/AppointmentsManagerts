@@ -7,16 +7,40 @@ import sampledata from '../../common/SampleFiles/cloneitem.json'
 const UnArchive: React.FC<ReviewCodesProps> = () => {
     const [data, setData] = useState<ICP1[]>([]);
     const [searchTerm, setSearchTerm] = useState<string>('');
+    const [isFirstModalVisible, setFirstModalVisible] = useState(false);
+    const [isSecondModalVisible, setSecondModalVisible] = useState(false);
+    const [isErrorModalVisible, setErrorModalVisible] = useState(false);
+    const [selectedRecord, setSelectedRecord] = useState<ICP1 | null>(null);
+
+    const handleButtonClick = (record: ICP1) => {
+        setFirstModalVisible(true);
+        setSelectedRecord(record);
+        console.log(selectedRecord);
+    };
+
+    const handleFirstModalConfirm = () => {
+        setFirstModalVisible(false);
+        setSecondModalVisible(true);
+    };
+
+    const handleFirstModalCancel = () => {
+        setFirstModalVisible(false);
+        setErrorModalVisible(true);
+    };
+
+    const handleSecondModalClose = () => {
+        setSecondModalVisible(false);
+    };
+
+    const handleErrorModalClose = () => {
+        setErrorModalVisible(false);
+    };
 
     const filteredData = data.filter(record =>
         Object.values(record).some(value =>
             value.toString().toLowerCase().includes(searchTerm.toLowerCase())
         )
     );
-
-    const handleSearchChange = (term: string) => {
-        setSearchTerm(term);
-    };
 
     useEffect(() => {
         const fetchData = async () => {
@@ -37,72 +61,73 @@ const UnArchive: React.FC<ReviewCodesProps> = () => {
                 type="text"
                 placeholder="Search..."
                 />
-                <button>UnArchive CP1</button>
+                
             </div>
             <table className="sample-table" style={{ overflowX: "scroll", display: "block" }}>
                 <thead>
                     <tr>
-                        <th>select</th>
-                        <th>Appr</th>
-                        <th>S</th>
-                        <th>PrNo</th>
-                        <th>Contract</th>
-                        <th>Replacement</th>
+                        <th>Project_id</th>
+                        <th>Cp1no</th>
                         <th>AgySAAScode</th>
-                        <th>PartnerCode</th>
-                        <th>Partner</th>
-                        <th>MptMagiccode</th>
-                        <th>MptName</th>
-                        <th>VendorMagiccode</th>
-                        <th>VendorName</th>
-                        <th>Frequency</th>
-                        <th>Total</th>
-                        <th>Acquisition</th>
-                        <th>Approval</th>
-                        <th>AthtyDate</th>
-                        <th>ApprovedBy</th>
-                        <th>AprrDate</th>
-                        <th>RollDate</th>
-                        <th>Add_UserID</th>
-                        <th>Add_tds</th>
-                        <th>Mod_UserID</th>
-                        <th>Mod_tds</th>
-                        <th>OldOrderVenCode</th>
-                        <th>OldMPTCde</th>
-
+                        <th>Agencycode</th>
+                        <th>Agnname</th>
+                        <th>MPTSaasCode</th>
+                        <th>MPTName</th>
+                        <th>select</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {filteredData.map(row => (
+                    {data.map(row => (
                         <tr key={row.id}>
-                            <td>{row.Appr}</td>
-                            <td>{row.S}</td>
-                            <td>{row.Prno}</td>
-                            <td>{row.Cp1no}</td>
-                            <td>{row.Contract}</td>
-                            <td>{row.Replacemnt}</td>
-                            <td>{row.AgySAAScode}</td>
+                            <td>{row.PrNo}</td>
+                            <td>{row.CP1no}</td>
+                            <td>{row.AgySAASCode}</td>
                             <td>{row.PartnerCode}</td>
-                            <td>{row.partner}</td>
-                            <td>{row.MptMagiccode}</td>
-                            <td>{row.MptName}</td>
+                            <td>{row.Contract}</td>
                             <td>{row.VendorMagiccode}</td>
                             <td>{row.VendorName}</td>
-                            <td>{row.Frequency}</td>
-                            <td>{row.Total}</td>
-                            <td>{row.Acquisition}</td>
-                            <td>{row.Approval}</td>
-                            <td>{row.AthtyDate}</td>
-                            <td>{row.ApprovedBy}</td>
-                            <td>{row.ApprDate}</td>
-                            <td>{row.RollDate}</td>
-                            <td>{row.Add_UserID}</td>
-                            <td>{row.Add_tds}</td>
-                            <td>{row.Mod_UserID}</td>
-                            <td>{row.Mod_tds}</td>
-                            <td>{row.OldOrderVenCode}</td>
-                            <td>{row.OldMPTCde}</td>
-                            <td>{row.OldMPTCde}</td>
+                            <td>
+                                <button onClick={() => handleButtonClick(row)}>UnArchive CP1</button>
+                                {selectedRecord && (
+                                    <Modal
+                                        isVisible={isFirstModalVisible}
+                                        onClose={() => setFirstModalVisible(false)}
+                                        title="Confirm Action"
+                                    >
+                                        <div className="items-container">
+                                            <div className="item" style={{ display: "block" }}>
+                                                <label>
+                                                    {selectedRecord.CP1no} for {selectedRecord.Contract} will appended to the active CP1 tables and deleted from the Archived CP1 tables.
+
+                                                    <br></br>
+                                                    <br></br>
+
+                                                    Are you sure you want to continue?
+                                                </label>
+                                                <br></br>
+                                                <div style={{ marginTop: "20px" }}>
+                                                    <button onClick={handleFirstModalConfirm}>Yes</button>
+                                                    <button onClick={handleFirstModalCancel} style={{ marginLeft: "15px" }}>No</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </Modal>)}
+                            <Modal
+                                isVisible={isSecondModalVisible}
+                                onClose={handleSecondModalClose}
+                                title="Success"
+                            >
+                                <p>Uniqueness of CP1 is violated</p>
+                            </Modal>
+
+                            <Modal
+                                isVisible={isErrorModalVisible}
+                                onClose={handleErrorModalClose}
+                                title="Error"
+                            >
+                                <p>UnArchive Cancelled</p>
+                                </Modal>
+                            </td>
                         </tr>
                     ))}
                 </tbody>

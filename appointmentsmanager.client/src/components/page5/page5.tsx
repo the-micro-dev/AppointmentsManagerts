@@ -1,18 +1,7 @@
-import React, { useState } from 'react'
-import ReviewCodes from './codes/ReviewCodes'
-import DataEntry from './codes/DataEntry'
+import React from 'react'
 import MainCodes from './codes/MainCodes'
 import AgenciesMainCodes from './Agencies/MainCodes'
 import { useLocation } from 'react-router-dom'
-
-interface Record {
-    id: number;
-    prodCadCode?: number;
-    description: string;
-    objectCode: string;
-    phone: string;
-    address: string;
-}
 
 const Page5Content: React.FC = () => {
     const location = useLocation();
