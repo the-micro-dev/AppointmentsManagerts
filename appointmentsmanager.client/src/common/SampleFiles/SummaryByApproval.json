@@ -1,0 +1,17 @@
+[
+  {
+    "Typecode": "Regular Cp1",
+    "Approvalcategory": "Authority",
+    "Replacementcategory": "NEW",
+    "Totallifecycle": 4872635.14,
+    "Numcp1s": "15"
+  },
+
+  {
+    "Typecode": " ",
+    "Approvalcategory": "Department",
+    "Replacementcategory": "Sub Sequent",
+    "Totallifecycle": -2345663.78,
+    "Numcp1s": "1"
+  }
+]
