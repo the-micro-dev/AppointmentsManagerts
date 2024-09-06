@@ -5,11 +5,13 @@ import React, { useState, useRef } from 'react';
 export const Navbar = () => {
     const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
     const [isDropdown2Open, setIsDropdown2Open] = useState<boolean>(false);
+    const [isDropdown3Open, setIsDropdown3Open] = useState<boolean>(false);
     const dropdownRef = useRef<HTMLDivElement>(null);
 
     // Toggle the dropdown menu
-    const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
-    const toggleDropdown2 = () => setIsDropdown2Open(!isDropdown2Open);
+    const toggleDropdown = () => { setIsDropdownOpen(!isDropdownOpen); setIsDropdown2Open(false); setIsDropdown3Open(false) };
+    const toggleDropdown2 = () => { setIsDropdown2Open(!isDropdown2Open); setIsDropdownOpen(false); setIsDropdown3Open(false) };
+    const toggleDropdown3 = () => { setIsDropdown3Open(!isDropdown3Open); setIsDropdownOpen(false); setIsDropdown2Open(false) };
 
     return (
         < div className="main-navbar">
@@ -47,6 +49,16 @@ export const Navbar = () => {
                     <ul className="dropdown-menu">
                         <li style={{ margin: "0px" }} onClick={toggleDropdown2}><NavLink to="/directorApproval" className={({ isActive }) => isActive ? 'active-link' : undefined}>Director Approvals</NavLink></li>
                         <li style={{ margin: "0px" }} onClick={toggleDropdown2}><NavLink to="/unarchive" className={({ isActive }) => isActive ? 'active-link' : undefined}>UnArchive CP1</NavLink></li>
+                    </ul>
+                )}
+            </div>
+            <div className="dropdown" ref={dropdownRef}>
+                    <div className="dropdown-toggle" onClick={toggleDropdown3}>
+                        Other Reports
+                    </div>
+                {isDropdown3Open && (
+                    <ul className="dropdown-menu">
+                        <li style={{ margin: "0px" }} onClick={toggleDropdown3}><NavLink to="/reports" className={({ isActive }) => isActive ? 'active-link' : undefined}>Annual\Summary Reports</NavLink></li>
                     </ul>
                 )}
             </div>

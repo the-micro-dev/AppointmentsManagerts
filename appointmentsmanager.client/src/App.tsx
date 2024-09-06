@@ -7,6 +7,7 @@ import Page6 from './components/page6/page6'
 import { Route, Routes } from "react-router-dom";
 import { MainHeader } from "./components/MainHeader/MainHeader"
 import { DataProvider } from './common/DataContextProvider'
+import Page7 from './components/page7/page7'
 
 function App() {
     return (
@@ -20,7 +21,8 @@ function App() {
                         <Route path="/codes" element={<Page5 />} />
                         <Route path="/agencies" element={<Page5 />} />
                         <Route path="/unarchive" element={<Page6 />} />
-                        <Route path="/directorApproval" element={<Page6 />} />
+                    <Route path="/directorApproval" element={<Page6 />} />
+                    <Route path="/reports" element={<Page7 />} />
                 </Routes>
             </div>
         </DataProvider>
