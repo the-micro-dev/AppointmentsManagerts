@@ -1,0 +1,30 @@
+.utilities-checkbox label{
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.utilities-checkbox input {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.utilities-checkbox {
+    display: inline-block;
+}
+
+.wrapper {
+    border:3px solid rgba(3,56,119,255);
+    padding:30px;
+    flex-direction:column;
+}
+
+.utilities b{
+    color:red;
+}
+
+.entry-dates{
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+    align-items:flex-end;
+}

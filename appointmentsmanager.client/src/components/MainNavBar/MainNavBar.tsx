@@ -6,12 +6,14 @@ export const Navbar = () => {
     const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
     const [isDropdown2Open, setIsDropdown2Open] = useState<boolean>(false);
     const [isDropdown3Open, setIsDropdown3Open] = useState<boolean>(false);
+    const [isDropdown4Open, setIsDropdown4Open] = useState<boolean>(false);
     const dropdownRef = useRef<HTMLDivElement>(null);
 
     // Toggle the dropdown menu
-    const toggleDropdown = () => { setIsDropdownOpen(!isDropdownOpen); setIsDropdown2Open(false); setIsDropdown3Open(false) };
-    const toggleDropdown2 = () => { setIsDropdown2Open(!isDropdown2Open); setIsDropdownOpen(false); setIsDropdown3Open(false) };
-    const toggleDropdown3 = () => { setIsDropdown3Open(!isDropdown3Open); setIsDropdownOpen(false); setIsDropdown2Open(false) };
+    const toggleDropdown = () => { setIsDropdownOpen(!isDropdownOpen); setIsDropdown2Open(false); setIsDropdown3Open(false); setIsDropdown4Open(false) };
+    const toggleDropdown2 = () => { setIsDropdown2Open(!isDropdown2Open); setIsDropdownOpen(false); setIsDropdown3Open(false); setIsDropdown4Open(false) };
+    const toggleDropdown3 = () => { setIsDropdown3Open(!isDropdown3Open); setIsDropdownOpen(false); setIsDropdown2Open(false); setIsDropdown4Open(false) };
+    const toggleDropdown4 = () => { setIsDropdown4Open(!isDropdown4Open); setIsDropdownOpen(false); setIsDropdown2Open(false); setIsDropdown3Open(false) };
 
     return (
         < div className="main-navbar">
@@ -63,6 +65,19 @@ export const Navbar = () => {
                 )}
             </div>
             <NavLink to="/contracts" className={({ isActive }) => isActive ? 'active-link' : undefined}>Review/Maint Contracts </NavLink>
+            <div className="dropdown" ref={dropdownRef}>
+                <div className="dropdown-toggle" onClick={toggleDropdown4}>
+                    Utilities
+                </div>
+                {isDropdown4Open && (
+                    <ul className="dropdown-menu">
+                        <li style={{ margin: "0px" }} onClick={toggleDropdown4}><NavLink to="/cleanup" className={({ isActive }) => isActive ? 'active-link' : undefined}>Cleanup</NavLink></li>
+                        <li style={{ margin: "0px" }} onClick={toggleDropdown4}><NavLink to="/maintaincodes" className={({ isActive }) => isActive ? 'active-link' : undefined}>Maintain Codes</NavLink></li>
+                        <li style={{ margin: "0px" }} onClick={toggleDropdown4}><NavLink to="/archive" className={({ isActive }) => isActive ? 'active-link' : undefined}>Archiving</NavLink></li>
+                        <li style={{ margin: "0px" }} onClick={toggleDropdown4}><NavLink to="/sanitychecks" className={({ isActive }) => isActive ? 'active-link' : undefined}>Sanity Checks</NavLink></li>
+                    </ul>
+                )}
+            </div>
         </div >
     );
 }

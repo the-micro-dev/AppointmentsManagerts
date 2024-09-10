@@ -9,6 +9,7 @@ import { MainHeader } from "./components/MainHeader/MainHeader"
 import { DataProvider } from './common/DataContextProvider'
 import Page7 from './components/page7/page7'
 import Page8 from './components/page8/page8'
+import Page9 from './components/page9/page9'
 
 function App() {
     return (
@@ -25,6 +26,10 @@ function App() {
                         <Route path="/directorApproval" element={<Page6 />} />
                         <Route path="/reports" element={<Page7 />} />
                         <Route path="/contracts" element={<Page8 />} />
+                        <Route path="/cleanup" element={<Page9 />} />
+                    <Route path="/maintaincodes" element={<Page9 />} />
+                    <Route path="/archive" element={<Page9 />} />
+                    <Route path="/sanitychecks" element={<Page9 />} />
                 </Routes>
             </div>
         </DataProvider>
