@@ -62,6 +62,7 @@ export const Navbar = () => {
                     </ul>
                 )}
             </div>
+            <NavLink to="/contracts" className={({ isActive }) => isActive ? 'active-link' : undefined}>Review/Maint Contracts </NavLink>
         </div >
     );
 }

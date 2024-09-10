@@ -104,6 +104,7 @@ const Page7: React.FC = () => {
                             isVisible={activeModal !== null}
                             onClose={closeModal}
                         >
+                            <div style={{ overflowX: "scroll" }}>
                             <table>
                                 <thead>
                                     <tr>
@@ -121,7 +122,8 @@ const Page7: React.FC = () => {
                                         </tr>
                                     ))}
                                 </tbody>
-                            </table>
+                                </table>
+                            </div>
                         </Modal>
                     )}
                 </section>
