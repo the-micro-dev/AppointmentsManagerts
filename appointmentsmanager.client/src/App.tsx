@@ -10,6 +10,7 @@ import { DataProvider } from './common/DataContextProvider'
 import Page7 from './components/page7/page7'
 import Page8 from './components/page8/page8'
 import Page9 from './components/page9/page9'
+import Page3 from './components/page3/page3'
 
 function App() {
     return (
@@ -19,7 +20,8 @@ function App() {
                 <Navbar></Navbar>
                 <Routes>
                         <Route path="/page1" element={<Page1 />} />
-                        <Route path="/page2" element={<Page2 />} />
+                    <Route path="/page2" element={<Page2 />} />
+                    <Route path="/page3" element={<Page3 />} />
                         <Route path="/codes" element={<Page5 />} />
                         <Route path="/agencies" element={<Page5 />} />
                         <Route path="/unarchive" element={<Page6 />} />

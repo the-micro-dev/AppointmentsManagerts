@@ -21,6 +21,7 @@ const Page2Content: React.FC = () => {
 
     return (
         <div className="page2">
+        <form>
             <div className="sub-navbar">
                 <ul>
                     <li
@@ -96,7 +97,8 @@ const Page2Content: React.FC = () => {
                 {activeTab === 'subcontent8' && <Page2Tab8 />}
                 {activeTab === 'subcontent9' && <Page2Tab9 />}
                 {activeTab === 'subcontent10' && <Page2Tab10 />}
-            </div>
+                </div>
+            </form>
         </div>
     );
 }
