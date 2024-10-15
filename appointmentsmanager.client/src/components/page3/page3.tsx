@@ -1,189 +1,55 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 
-const options = ['Option 1', 'Option 2', 'Option 3', 'Option 4', 'Option 5'];
-const options2=["Look in Lines","Look in Summary","Look in Comment"]
 
 const Page3: React.FC = () => {
+    const sampleData: TableData[] = [
+        { id: 1, code: 'SWMFT', description: 'SWMFT Memo'},
+        { id: 2, code: 'SWMFT', description: 'report report report report report report report' },
+        { id: 3, code: 'SWMFT', description: 'Report 9999999'},
+        { id: 4, code: 'SWMFT', description: 'Report 123' },
+        { id: 5, code: 'SWMFT', description: 'Report' },
+        // Add more sample data as needed
+    ];
 
-    const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
+    const [data, setData] = useState<TableData[]>(sampleData);
 
-    const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const { value, checked } = event.target;
-        if (checked) {
-            // Add the selected option
-            setSelectedOptions([...selectedOptions, value]);
-        } else {
-            // Remove the deselected option
-            setSelectedOptions(selectedOptions.filter((option) => option !== value));
-        }
-    };
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const result: TableData[] = sampleData;
+                setData(result);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+
+        fetchData();
+    }, []);
 
     return (
         <div className="page3">
-            <div style={{ display: 'flex', justifyContent: 'space-between', width: '400px' }}>
-                {/* First gender group */}
-                <div>
-                    <label style={{ fontWeight: 'bold' }}>Gender *</label>
-                    <div style={{ display: 'flex', flexDirection: 'column' }}>
-                        <label style={{ display: 'inline-flex', alignItems: 'center' }}>
-                            <input
-                                type="radio"
-                                name="gender1"
-                                value="Male"
-                                style={{ marginRight: '8px' }}
-                            />
-                            Male
-                        </label>
-                        <label style={{ display: 'inline-flex', alignItems: 'center' }}>
-                            <input
-                                type="radio"
-                                name="gender1"
-                                value="Female"
-                                style={{ marginRight: '8px' }}
-                            />
-                            Female
-                        </label>
-                        <label style={{ display: 'inline-flex', alignItems: 'center' }}>
-                            <input
-                                type="radio"
-                                name="gender1"
-                                value="Other"
-                                style={{ marginRight: '8px' }}
-                            />
-                            Other
-                        </label>
-                    </div>
+            <label className="reports-header">Reports</label>
+            <div className="app-container">
+                <div className="table-container">
+                    <table>
+                        <thead>
+                            <tr className="header-row-page3">
+                                <th style={{ width: '100px' }}></th>
+                                <th style={{ width: '300px' }}>Code</th>
+                                <th style={{ width: '300px' }}>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {data.map(item => (
+                                <tr key={item.id} style={{ backgroundColor: item.id % 2 === 0 ? 'lightblue' : 'white' }}>
+                                    <td ><a href={item.id} style={{ color: "blue" }}>Select</a></td>
+                                    <td>{item.code}</td>
+                                    <td>{item.description}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
                 </div>
-
-                {/* Second gender group */}
-                <div>
-                    <label style={{ fontWeight: 'bold' }}>Gender *</label>
-                    <div style={{ display: 'flex', flexDirection: 'column' }}>
-                        <label style={{ display: 'inline-flex', alignItems: 'center' }}>
-                            <input
-                                type="radio"
-                                name="gender2"
-                                value="Male"
-                                style={{ marginRight: '8px' }}
-                            />
-                            Male
-                        </label>
-                        <label style={{ display: 'inline-flex', alignItems: 'center' }}>
-                            <input
-                                type="radio"
-                                name="gender2"
-                                value="Female"
-                                style={{ marginRight: '8px' }}
-                            />
-                            Female
-                        </label>
-                        <label style={{ display: 'inline-flex', alignItems: 'center' }}>
-                            <input
-                                type="radio"
-                                name="gender2"
-                                value="Other"
-                                style={{ marginRight: '8px' }}
-                            />
-                            Other
-                        </label>
-                    </div>
-                </div>
-
-                <div>
-                    <label style={{ fontWeight: 'bold' }}>Gender *</label>
-                    <div style={{ display: 'flex', flexDirection: 'column' }}>
-                        <label style={{ display: 'inline-flex', alignItems: 'center' }}>
-                            <input
-                                type="radio"
-                                name="gender1"
-                                value="Male"
-                                style={{ marginRight: '8px' }}
-                            />
-                            Male
-                        </label>
-                        <label style={{ display: 'inline-flex', alignItems: 'center' }}>
-                            <input
-                                type="radio"
-                                name="gender1"
-                                value="Female"
-                                style={{ marginRight: '8px' }}
-                            />
-                            Female
-                        </label>
-                        <label style={{ display: 'inline-flex', alignItems: 'center' }}>
-                            <input
-                                type="radio"
-                                name="gender1"
-                                value="Other"
-                                style={{ marginRight: '8px' }}
-                            />
-                            Other
-                        </label>
-                    </div>
-                </div>
-            </div>
-            <div>
-                <section style={{ display: "flex", flexDirection: "column" }}>
-                    <b>Select By:</b>
-                    {options.map((option) => (
-                        <label key={option} style={{ display: 'inline-flex', alignItems: 'center' }}>
-                            <input
-                                type="checkbox"
-                                value={option}
-                                checked={selectedOptions.includes(option)}
-                                onChange={handleCheckboxChange}
-                                style={{ width:'20px' }}
-                            />
-                            {option}
-                        </label>))}
-
-                    <div style={{ display: "flex" }} >
-                        <label>Consultant</label>
-                        <input style={{ height: "27px", marginTop: "25px", width: "130px" }} className="disabled"></input>
-                        <label>Project</label>
-                        <input style={{ height: "27px", marginTop: "25px", width: "130px" }} className="disabled"></input>
-                        <input style={{ height: "27px", marginTop: "25px", marginLeft: "60px" }} className="disabled"></input>
-                    </div>
-                </section>
-                <section style={{ display: "flex", flexDirection: "column", border: "2px solid grey",padding:"20px" }}>
-                {options2.map((option) => (
-                    <label key={option} style={{ display: 'inline-flex', alignItems: 'center' }}>
-                        <input
-                            type="checkbox"
-                            value={option}
-                            checked={selectedOptions.includes(option)}
-                            onChange={handleCheckboxChange}
-                            style={{ width: '20px' }}
-                        />
-                        <label style={{ width:"-webkit-fill-available" }}>{option}</label>
-                        <input></input>
-                    </label>))}
-
-                    <select >
-                        <option value="">Select Action</option>
-                        <option value="Add">Add</option>
-                        <option value="Clone">Clone</option>
-                    </select>
-                </section>
-
-                <label>
-                    Hint:If you want to select "Print whole"
-                </label>
-                <label>Consultant</label>
-                <input style={{ height: "27px", marginTop: "25px", display:"flex" }} className="disabled"></input>
-                <section style={{ display: "flex", gap: "20px" }}>
-
-
-                <button style={{ display:"block" }}>
-                Run Report
-                    </button>
-                    <button style={{ display: "block" }}>
-                        Run Report
-                    </button>
-                    <button style={{ display: "block" }}>
-                        Run Report
-                    </button>
-                </section>
             </div>
         </div>
     );
